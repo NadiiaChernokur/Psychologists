@@ -1,21 +1,47 @@
-import Appointment from "./Appoinment/Appointment";
-import Card from "./Card/Card";
 import Header from "./Header/Header";
-import LogIn from "./LogIn/LogIn";
-import MainPage from "./MainPage/MainPage";
-import Registration from "./Registration/Registration";
 
-function App() {
+import { Navigate, Route, Routes } from "react-router-dom";
+
+import { Suspense, lazy } from "react";
+
+const MainPage = lazy(() => import("./MainPage/MainPage"));
+const PsychologistPage = lazy(() =>
+  import("./PsychologistsList/PsychologistsList")
+);
+// const Favorits = lazy(() => import("./FavoriteList/FavoritList"));
+const LogIn = lazy(() => import("./LogIn/LogIn.js"));
+const Registration = lazy(() => import("./Registration/Registration.js"));
+
+const App = () => {
   return (
-    <div>
-      {/* {<Header />}
-      {<MainPage />} */}
-      {/* {<LogIn />} */}
-      {/* {<Registration />} */}
-      {/* {<Card />} */}
-      {<Appointment />}
-    </div>
+    <>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<Header />}>
+            <Route index element={<MainPage />}></Route>
+            <Route path="/psychologists" element={<PsychologistPage />}></Route>
+            {/* <Route path="/favorite" element={<Favorits />}></Route> */}
+            <Route path="/login" element={<LogIn />}></Route>
+            <Route path="/registration" element={<Registration />}></Route>
+            <Route path="*" element={<Navigate to="/" />} />
+          </Route>
+        </Routes>
+      </Suspense>
+    </>
   );
-}
+};
+// function App() {
+//   return (
+//     <AppContainer>
+//       {/* {<Header />}
+//       {<MainPage />} */}
+//       {/* {<LogIn />} */}
+//       {/* {<Registration />} */}
+//       {/* {<Card />} */}
+//       {/* {<Appointment />} */}
+//       {<PsychologistsList />}
+//     </AppContainer>
+//   );
+// }
 
 export default App;

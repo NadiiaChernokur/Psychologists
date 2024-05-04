@@ -12,6 +12,7 @@ import {
   AppointmentText,
   InputTime,
   Send,
+  TextArea,
   TimeDiv,
 } from "./Appointment.styled";
 
@@ -20,7 +21,7 @@ const schema = yup.object().shape({
   password: yup.string().required(),
 });
 
-const Appointment = () => {
+const Appointment = ({ doctor }) => {
   const {
     register,
     handleSubmit,
@@ -30,7 +31,8 @@ const Appointment = () => {
   });
 
   const onSubmit = (data) => {
-    console.log(data); // Дані з форми, якщо вони пройшли валідацію
+    console.log(data);
+    console.log("6666666666");
   };
   return (
     <AppointmentModalBackground>
@@ -43,10 +45,13 @@ const Appointment = () => {
           for your privacy.
         </AppointmentText>
         <AppointmentPsych>
-          <AppointmentImg src="" alt="опис_зображення"></AppointmentImg>
+          <AppointmentImg
+            src={doctor.avatar_url}
+            alt={doctor.name}
+          ></AppointmentImg>
           <div>
             <p>Your psychologists</p>
-            <p>Dr. Sarah Davis</p>
+            <p>{doctor.name}</p>
           </div>
         </AppointmentPsych>
         <AppointmentForm onSubmit={handleSubmit(onSubmit)}>
@@ -72,7 +77,7 @@ const Appointment = () => {
             placeholder="Email"
           />
 
-          <AppoinmentInput
+          <TextArea
             type="textarea"
             {...register("comment")}
             placeholder="Comment"

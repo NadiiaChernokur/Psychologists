@@ -19,69 +19,66 @@ import {
   UlList,
 } from "./Card.styled";
 import ReadMeButton from "./ReadMe";
+import { useDispatch } from "react-redux";
+import { getPsychologist, getPsychologists } from "../redux/operetion";
 
-const Card = () => {
-  const [click, setClick] = useState(false);
-  const HandleClick = () => {
-    setClick(true);
+const Card = ({ array }) => {
+  const [clicks, setClicks] = useState({});
+
+  const handleClick = (index) => {
+    setClicks((prevClicks) => ({
+      ...prevClicks,
+      [index]: !prevClicks[index],
+    }));
   };
   return (
     <UlList>
-      <List>
-        <CardImg src="" alt=""></CardImg>
-        <CardInformation>
-          <Rating>
-            <PsychP>Psychologist</PsychP>
-            <RatingDiv>
-              <svg width="22" height="22"></svg>
-              <RatingP>Rating: 4.8</RatingP>
-              <Price>
-                Price / 1 hour:<PriceSpan>160$</PriceSpan>{" "}
-              </Price>
-              <svg width="22" height="22"></svg>
-            </RatingDiv>
-          </Rating>
-          <Name>Dr. Lisa Anderson</Name>
-          <ExperienceDiv>
-            <ExperienceContainer>
-              <Experience>
-                Experience: <ExperienceSpan>20 years</ExperienceSpan>
-              </Experience>
-              <Experience>
-                License:
-                <ExperienceSpan>
-                  Licensed Psychologist (License #54321)
-                </ExperienceSpan>
-              </Experience>
-            </ExperienceContainer>
-            <ExperienceContainer>
-              <Experience>
-                Specialization:
-                <ExperienceSpan> Relationship Counseling </ExperienceSpan>
-              </Experience>
-              <Experience>
-                Initial_consultation:
-                <ExperienceSpan>
-                  Free 60-minute initial consultation
-                </ExperienceSpan>
-              </Experience>
-            </ExperienceContainer>
-          </ExperienceDiv>
-          <About>
-            Dr. Mark Thompson is a highly experienced and licensed psychologist
-            specializing in Relationship Counseling. With 20 years of practice,
-            he has helped individuals navigate and improve their relationships,
-            leading to better well-being and personal growth. Dr. Thompson is
-            known for his expertise and ability to provide invaluable insights
-            to his clients. His approach to therapy is tailored to each
-            individual's unique needs, ensuring a supportive and effective
-            counseling experience.
-          </About>
-          {!click && <ReadMe onClick={HandleClick}>Read more</ReadMe>}
+      {array.map((el, index) => (
+        <List key={el.name}>
+          <CardImg src={el.avatar_url} alt={el.name}></CardImg>
+          <CardInformation>
+            <Rating>
+              <PsychP>Psychologist</PsychP>
+              <RatingDiv>
+                <svg width="22" height="22"></svg>
+                <RatingP>Rating: {el.rating}</RatingP>
+                <Price>
+                  Price / 1 hour:<PriceSpan> {el.price_per_hour}$</PriceSpan>
+                </Price>
+                <svg width="22" height="22"></svg>
+              </RatingDiv>
+            </Rating>
+            <Name>{el.name}</Name>
+            <ExperienceDiv>
+              <ExperienceContainer>
+                <Experience>
+                  Experience: <ExperienceSpan>{el.experience}</ExperienceSpan>
+                </Experience>
+                <Experience>
+                  License:
+                  <ExperienceSpan> {el.license}</ExperienceSpan>
+                </Experience>
+              </ExperienceContainer>
+              <ExperienceContainer>
+                <Experience>
+                  Specialization:
+                  <ExperienceSpan> {el.specialization}</ExperienceSpan>
+                </Experience>
+                <Experience>
+                  Initial_consultation:
+                  <ExperienceSpan> {el.initial_consultation}</ExperienceSpan>
+                </Experience>
+              </ExperienceContainer>
+            </ExperienceDiv>
+            <About>{el.about}</About>
+            {!clicks[index] && (
+              <ReadMe onClick={() => handleClick(index)}>Read more</ReadMe>
+            )}
 
-          {click && <ReadMeButton />}
-        </CardInformation>
-      </List>
+            {clicks[index] && <ReadMeButton array={el.reviews} doctor={el} />}
+          </CardInformation>
+        </List>
+      ))}
     </UlList>
   );
 };

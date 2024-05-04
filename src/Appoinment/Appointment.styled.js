@@ -88,3 +88,15 @@ export const Send = styled.button`
   padding: 16px 217px;
   margin-top: 24px;
 `;
+export const TextArea = styled.textarea`
+  border: 1px solid rgba(25, 26, 21, 0.1);
+  border-radius: 12px;
+  padding: 16px 18px;
+
+  &::placeholder {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 125%;
+    color: #191a15;
+  }
+`;

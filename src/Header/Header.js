@@ -1,3 +1,4 @@
+import { NavLink, Outlet } from "react-router-dom";
 import {
   Button,
   Buttons,
@@ -11,22 +12,27 @@ import {
 
 const Header = () => {
   return (
-    <HeaderContainer>
-      <LogoDiv>
-        <Logo>
-          <LogoSpan>psychologists.</LogoSpan>services
-        </Logo>
-        <Pages>
-          <HeaderParagraf>Home</HeaderParagraf>
-          <HeaderParagraf>Psychologists</HeaderParagraf>
-          <HeaderParagraf> Favorites</HeaderParagraf>
-        </Pages>
-      </LogoDiv>
-      <Buttons>
-        <Button>Log In</Button>
-        <Button>Registration</Button>
-      </Buttons>
-    </HeaderContainer>
+    <>
+      <HeaderContainer>
+        <LogoDiv>
+          <NavLink to="/">
+            <Logo>
+              <LogoSpan>psychologists.</LogoSpan>services
+            </Logo>
+          </NavLink>
+          <Pages>
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/psychologists">Psychologists</NavLink>
+            <NavLink to="/favorite"> Favorites</NavLink>
+          </Pages>
+        </LogoDiv>
+        <Buttons>
+          <NavLink to="/login">Log In</NavLink>
+          <NavLink to="/registration">Registration</NavLink>
+        </Buttons>
+      </HeaderContainer>
+      <Outlet />
+    </>
   );
 };
 export default Header;

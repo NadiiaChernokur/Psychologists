@@ -12,52 +12,35 @@ import {
 } from "./ReadMe.styled";
 import Appointment from "../Appoinment/Appointment";
 
-const ReadMeButton = () => {
+const ReadMeButton = ({ array, doctor }) => {
+  console.log(doctor);
   const [modal, setModal] = useState(false);
   const ShowModal = () => {
     setModal(true);
   };
   return (
     <ReadMeContainer>
-      <ReadMeUl>
-        <ReadMeLi>
-          <LiDiv>
-            <Letter></Letter>
-            <div>
-              <p>Michael Brown</p>
-              <StarDiv>
-                <Star></Star>
-
-                <p>4.5</p>
-              </StarDiv>
-            </div>
-          </LiDiv>
-          <Response>
-            Dr. Davis has been a great help in managing my depression. Her
-            insights have been valuable.
-          </Response>
-        </ReadMeLi>
-        <ReadMeLi>
-          <LiDiv>
-            <Letter></Letter>
-            <div>
-              <p>Michael Brown</p>
-              <StarDiv>
-                <Star></Star>
-                <p>4.5</p>
-              </StarDiv>
-            </div>
-          </LiDiv>
-          <Response>
-            Dr. Davis has been a great help in managing my depression. Her
-            insights have been valuable.
-          </Response>
-        </ReadMeLi>
-      </ReadMeUl>
+      {array.map((el, index) => (
+        <ReadMeUl>
+          <ReadMeLi key={index}>
+            <LiDiv>
+              <Letter></Letter>
+              <div>
+                <p>{el.reviewer}</p>
+                <StarDiv>
+                  <Star></Star>
+                  <p>{el.rating}</p>
+                </StarDiv>
+              </div>
+            </LiDiv>
+            <Response>{el.comment}</Response>
+          </ReadMeLi>
+        </ReadMeUl>
+      ))}
       <MakeAnAppointment onClick={ShowModal}>
         Make an appointment
       </MakeAnAppointment>
-      {modal && <Appointment />}
+      {modal && <Appointment doctor={doctor} />}
     </ReadMeContainer>
   );
 };
