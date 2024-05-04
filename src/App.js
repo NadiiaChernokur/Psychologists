@@ -1,3 +1,4 @@
+import Card from "./Card/Card";
 import Header from "./Header/Header";
 import LogIn from "./LogIn/LogIn";
 import MainPage from "./MainPage/MainPage";
@@ -9,7 +10,8 @@ function App() {
       {/* {<Header />}
       {<MainPage />} */}
       {/* {<LogIn />} */}
-      {<Registration />}
+      {/* {<Registration />} */}
+      {<Card />}
     </div>
   );
 }
