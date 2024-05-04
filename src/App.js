@@ -1,3 +1,4 @@
+import Appointment from "./Appoinment/Appointment";
 import Card from "./Card/Card";
 import Header from "./Header/Header";
 import LogIn from "./LogIn/LogIn";
@@ -11,7 +12,8 @@ function App() {
       {<MainPage />} */}
       {/* {<LogIn />} */}
       {/* {<Registration />} */}
-      {<Card />}
+      {/* {<Card />} */}
+      {<Appointment />}
     </div>
   );
 }

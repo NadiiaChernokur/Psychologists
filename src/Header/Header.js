@@ -19,6 +19,7 @@ const Header = () => {
         <Pages>
           <HeaderParagraf>Home</HeaderParagraf>
           <HeaderParagraf>Psychologists</HeaderParagraf>
+          <HeaderParagraf> Favorites</HeaderParagraf>
         </Pages>
       </LogoDiv>
       <Buttons>
