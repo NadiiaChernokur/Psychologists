@@ -3,6 +3,7 @@ import { createUser, getPsychologist } from "./operetion";
 
 const initialState = {
   psychologists: [],
+  user: {},
   isLoading: false,
   error: null,
 };
@@ -21,6 +22,7 @@ const handleGetPsychologist = (state, action) => {
 
 const userCreate = (state, action) => {
   console.log(action.payload);
+  state.user = action.payload;
 };
 const autoSlice = createSlice({
   name: "psychologists",

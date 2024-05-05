@@ -54,31 +54,38 @@ export const getPsychologist = createAsyncThunk(
 export const createUser = createAsyncThunk(
   "registration",
   async (data, thunkAPI) => {
-    console.log(data);
     try {
-      const { email, password } = data;
+      const { email, password, name } = data;
+      const usersRef = ref(userDatabase, "users");
+      const usersArray = await get(usersRef);
+      const result = usersArray.val();
+
+      Object.values(result).forEach((usemail) => {
+        console.log(usemail.email);
+        if (email === usemail.email) {
+          throw new Error("Ця адреса вже в нас є");
+        }
+      });
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
       const user = userCredential.user;
-      console.log(user);
-      // Отримайте ідентифікатор користувача
+      const { accessToken, stsTokenManager } = user;
       const userId = user.uid;
-      console.log(userId);
-
-      // Запишіть дані користувача в базу даних
       const userData = {
+        name: name,
         email: user.email,
-        // Додайте інші дані користувача за потребою
+        accessToken: accessToken,
+        refreshToken: stsTokenManager.refreshToken,
       };
-      const val = await set(ref(userDatabase, `users/${userId}`), userData);
-      console.log(val);
 
-      // Поверніть ідентифікатор користувача та інші дані
+      await set(ref(userDatabase, `users/${userId}`), userData);
+
       return { userId, ...userData };
     } catch (error) {
+      console.log(error);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
