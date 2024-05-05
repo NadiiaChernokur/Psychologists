@@ -11,6 +11,8 @@ import {
   RegistrationModalContainer,
   RegistrationParagraf,
 } from "./Registration.styled";
+import { createUser } from "../redux/operetion";
+import { useDispatch } from "react-redux";
 
 const schema = yup.object().shape({
   email: yup.string().email().required(),
@@ -18,6 +20,7 @@ const schema = yup.object().shape({
 });
 
 const Registration = () => {
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -27,6 +30,7 @@ const Registration = () => {
   });
   const onSubmit = (data) => {
     console.log(data); // Дані з форми, якщо вони пройшли валідацію
+    dispatch(createUser(data));
   };
   return (
     <RegistrationModalBackground>

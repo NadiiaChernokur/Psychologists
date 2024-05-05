@@ -24,7 +24,9 @@ const ReadMeButton = ({ array, doctor }) => {
         <ReadMeUl>
           <ReadMeLi key={index}>
             <LiDiv>
-              <Letter></Letter>
+              <Letter>
+                <p>{el.reviewer.charAt(0)}</p>
+              </Letter>
               <div>
                 <p>{el.reviewer}</p>
                 <StarDiv>

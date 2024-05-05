@@ -14,11 +14,17 @@ export const ReadMeLi = styled.li`
   flex-direction: column;
   gap: 16px;
 `;
-export const Letter = styled.svg`
+export const Letter = styled.div`
   border-radius: 100px;
   width: 44px;
   height: 44px;
   background: rgba(84, 190, 150, 0.2);
+  text-align: center;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 100%;
+  color: #54be96;
+  padding: 2px;
 `;
 export const Star = styled.svg`
   width: 16px;

@@ -21,6 +21,7 @@ export const CardImg = styled.img`
   border-radius: 30px;
   width: 120px;
   height: 120px;
+  padding: 12px;
   box-sizing: border-box;
 `;
 export const CardInformation = styled.div`
@@ -110,4 +111,12 @@ export const ReadMe = styled.button`
   border-radius: 0;
   border-bottom: 1.5px solid #191a15;
   background: none;
+`;
+export const Online = styled.svg`
+  position: absolute;
+  right: 14px;
+  top: 12px;
+`;
+export const OnlineD = styled.div`
+  position: relative;
 `;

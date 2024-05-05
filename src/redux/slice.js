@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getPsychologist } from "./operetion";
+import { createUser, getPsychologist } from "./operetion";
+
 const initialState = {
   psychologists: [],
   isLoading: false,
@@ -15,8 +16,11 @@ const handleRejected = (state, action) => {
   state.error = action.payload;
 };
 const handleGetPsychologist = (state, action) => {
-  console.log(action.payload);
   state.psychologists = action.payload;
+};
+
+const userCreate = (state, action) => {
+  console.log(action.payload);
 };
 const autoSlice = createSlice({
   name: "psychologists",
@@ -25,7 +29,10 @@ const autoSlice = createSlice({
     builder
       .addCase(getPsychologist.pending, handlePending)
       .addCase(getPsychologist.fulfilled, handleGetPsychologist)
-      .addCase(getPsychologist.rejected, handleRejected),
+      .addCase(getPsychologist.rejected, handleRejected)
+      .addCase(createUser.pending, handlePending)
+      .addCase(createUser.fulfilled, userCreate)
+      .addCase(createUser.rejected, handleRejected),
 });
 
 export const autoReducer = autoSlice.reducer;

@@ -12,6 +12,8 @@ import {
   LoginModalContainer,
   LoginParagraf,
 } from "./LogIn.styled";
+import { useDispatch } from "react-redux";
+import { createUser } from "../Users/usersConfig";
 
 const schema = yup.object().shape({
   email: yup.string().email().required(),
@@ -19,6 +21,7 @@ const schema = yup.object().shape({
 });
 
 const LogIn = () => {
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -29,6 +32,7 @@ const LogIn = () => {
 
   const onSubmit = (data) => {
     console.log(data); // Дані з форми, якщо вони пройшли валідацію
+    dispatch(createUser());
   };
   return (
     <LoginModalBackground>

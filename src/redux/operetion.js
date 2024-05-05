@@ -1,10 +1,11 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, get } from "firebase/database";
-
+import { getDatabase, ref, get, set } from "firebase/database";
+import firebase from "firebase/app";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const firebaseConfig = {
+const firebaseConfig1 = {
   apiKey: "AIzaSyDckWQWECL9IMvRADUlAGifTcrRXWFzCyI",
   authDomain: "psychologists-22f26.firebaseapp.com",
   databaseURL:
@@ -16,26 +17,22 @@ const firebaseConfig = {
   measurementId: "G-R9E8GRCFFB",
 };
 
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
+const app1 = initializeApp(firebaseConfig1, "app1");
+const database = getDatabase(app1);
 
-// Отримання даних з бази даних
-export const getPsychologists = async () => {
-  try {
-    const psychRef = ref(database);
-    const snapshot = await get(psychRef);
-    if (snapshot.exists()) {
-      console.log(snapshot.val());
-    } else {
-      console.log("No data available");
-    }
-  } catch (error) {
-    console.error("Error getting data:", error);
-  }
+const firebaseConfig2 = {
+  apiKey: "AIzaSyBBRSIDcuZEamZAUDHOkk8C-KBAYh4CgUM",
+  authDomain: "psychologist-7ca39.firebaseapp.com",
+  projectId: "psychologist-7ca39",
+  storageBucket: "psychologist-7ca39.appspot.com",
+  messagingSenderId: "731245160647",
+  appId: "1:731245160647:web:c9b69e0f0b3b72e72bf6e2",
+  measurementId: "G-Z94C558Q6P",
 };
 
-// Виклик функції для отримання даних
-// getPsychologists();
+const app2 = initializeApp(firebaseConfig2, "app2");
+const userDatabase = getDatabase(app2);
+const auth = getAuth(app2);
 
 export const getPsychologist = createAsyncThunk(
   "psychologists",
@@ -48,6 +45,39 @@ export const getPsychologist = createAsyncThunk(
       } else {
         console.log("No data available");
       }
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const createUser = createAsyncThunk(
+  "registration",
+  async (data, thunkAPI) => {
+    console.log(data);
+    try {
+      const { email, password } = data;
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+      console.log(user);
+      // Отримайте ідентифікатор користувача
+      const userId = user.uid;
+      console.log(userId);
+
+      // Запишіть дані користувача в базу даних
+      const userData = {
+        email: user.email,
+        // Додайте інші дані користувача за потребою
+      };
+      const val = await set(ref(userDatabase, `users/${userId}`), userData);
+      console.log(val);
+
+      // Поверніть ідентифікатор користувача та інші дані
+      return { userId, ...userData };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
