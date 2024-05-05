@@ -12,7 +12,8 @@ import {
   RegistrationParagraf,
 } from "./Registration.styled";
 import { createUser } from "../redux/operetion";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const schema = yup.object().shape({
   name: yup.string().required(),
@@ -21,7 +22,9 @@ const schema = yup.object().shape({
 });
 
 const Registration = () => {
+  const stateError = useSelector((state) => state.error);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -30,10 +33,13 @@ const Registration = () => {
     resolver: yupResolver(schema),
   });
   const onSubmit = (data) => {
-    const { error } = schema.validate(data);
-    console.log(error);
-    console.log(error.massage);
     dispatch(createUser(data));
+    console.log(data);
+
+    localStorage.setItem("email", JSON.stringify(data.email));
+    if (stateError.includes("Log in")) {
+      navigate("/login");
+    }
   };
   return (
     <RegistrationModalBackground>

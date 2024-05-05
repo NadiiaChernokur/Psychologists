@@ -12,8 +12,8 @@ import {
   LoginModalContainer,
   LoginParagraf,
 } from "./LogIn.styled";
-import { useDispatch } from "react-redux";
-import { createUser } from "../Users/usersConfig";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../redux/operetion";
 
 const schema = yup.object().shape({
   email: yup.string().email().required(),
@@ -21,18 +21,19 @@ const schema = yup.object().shape({
 });
 
 const LogIn = () => {
+  const stateError = useSelector((state) => state.error);
   const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema), // Використовуємо yup для резолвінгу
+    resolver: yupResolver(schema),
   });
 
   const onSubmit = (data) => {
-    console.log(data); // Дані з форми, якщо вони пройшли валідацію
-    dispatch(createUser());
+    dispatch(login(data));
+    console.log(stateError);
   };
   return (
     <LoginModalBackground>
@@ -45,6 +46,9 @@ const LogIn = () => {
         <LoginForm onSubmit={handleSubmit(onSubmit)}>
           <LoginField>
             <LoginInput {...register("email")} placeholder="Email" />
+            {errors.email && (
+              <span style={{ color: "#f71b2e" }}>{errors.email.message}</span>
+            )}
           </LoginField>
           <LoginField>
             <LoginInput
@@ -52,6 +56,11 @@ const LogIn = () => {
               {...register("password")}
               placeholder="Password"
             />
+            {errors.password && (
+              <span style={{ color: "#f71b2e" }}>
+                {errors.password.message}
+              </span>
+            )}
           </LoginField>
           <LoginButton type="submit">Log In</LoginButton>
         </LoginForm>
