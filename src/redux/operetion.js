@@ -63,7 +63,7 @@ export const createUser = createAsyncThunk(
       Object.values(result).forEach((usemail) => {
         console.log(usemail.email);
         if (email === usemail.email) {
-          throw new Error("Ця адреса вже в нас є");
+          throw new Error("This address already exists. Log in");
         }
       });
       const userCredential = await createUserWithEmailAndPassword(
@@ -85,7 +85,6 @@ export const createUser = createAsyncThunk(
 
       return { userId, ...userData };
     } catch (error) {
-      console.log(error);
       return thunkAPI.rejectWithValue(error.message);
     }
   }

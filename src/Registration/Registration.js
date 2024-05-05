@@ -15,8 +15,9 @@ import { createUser } from "../redux/operetion";
 import { useDispatch } from "react-redux";
 
 const schema = yup.object().shape({
+  name: yup.string().required(),
   email: yup.string().email().required(),
-  password: yup.string().required(),
+  password: yup.string().min(6).required(),
 });
 
 const Registration = () => {
@@ -26,10 +27,12 @@ const Registration = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema), // Використовуємо yup для резолвінгу
+    resolver: yupResolver(schema),
   });
   const onSubmit = (data) => {
-    console.log(data); // Дані з форми, якщо вони пройшли валідацію
+    const { error } = schema.validate(data);
+    console.log(error);
+    console.log(error.massage);
     dispatch(createUser(data));
   };
   return (
@@ -49,9 +52,19 @@ const Registration = () => {
               {...register("name")}
               placeholder="Name"
             />
+            {errors.name && (
+              <span style={{ color: "#f71b2e" }}>{errors.name.message}</span>
+            )}
           </div>
           <div>
-            <RegistrationInput {...register("email")} placeholder="Email" />
+            <RegistrationInput
+              type="email"
+              {...register("email")}
+              placeholder="Email"
+            />
+            {errors.email && (
+              <span style={{ color: "#f71b2e" }}>{errors.email.message}</span>
+            )}
           </div>
           <div>
             <RegistrationInput
@@ -59,6 +72,11 @@ const Registration = () => {
               {...register("password")}
               placeholder="Password"
             />
+            {errors.password && (
+              <span style={{ color: "#f71b2e" }}>
+                {errors.password.message}
+              </span>
+            )}
           </div>
           <RegistrationButton type="submit">Sign Up</RegistrationButton>
         </RegistrationForm>
