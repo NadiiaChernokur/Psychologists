@@ -9,6 +9,8 @@ import {
   orderByKey,
   limitToFirst,
   query,
+  startAfter,
+  equalTo,
 } from "firebase/database";
 
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
@@ -35,15 +37,9 @@ export const getPsychologist = createAsyncThunk(
   async (page, thunkAPI) => {
     try {
       const psychRef = ref(database);
-      console.log(psychRef);
-      const psycRef = query(
-        psychRef,
-        orderByKey(),
-        limitToFirst(2) // Додатковий 1 запис для визначення наявності наступної сторінки
-      );
-      console.log(psycRef);
+      const psycRef = query(psychRef, orderByKey(), limitToFirst(page));
       const snapshot = await get(psycRef);
-      console.log(snapshot.val());
+      return snapshot.val();
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

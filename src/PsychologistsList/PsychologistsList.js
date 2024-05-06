@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Card from "../Card/Card";
 import {
   Container,
@@ -10,9 +10,10 @@ import { getPsychologist } from "../redux/operetion";
 
 const PsychologistsList = () => {
   const dispatch = useDispatch();
+  const [page, setPage] = useState(3);
   const psychArray = useSelector((state) => state.psychologists);
   console.log(psychArray);
-  const page = 3;
+
   useEffect(() => {
     console.log("88888888");
     // if (psychArray.length > 0) {
@@ -20,7 +21,11 @@ const PsychologistsList = () => {
     // }
 
     dispatch(getPsychologist(page));
-  }, [dispatch]);
+  }, [dispatch, page]);
+  const addPage = () => {
+    console.log("jjjjjjj");
+    setPage((prev) => prev + 3);
+  };
   return (
     <Container>
       <PsychologistsListSelect>
@@ -32,8 +37,10 @@ const PsychologistsList = () => {
         <option>Not popular</option>
         <option>Show all</option>
       </PsychologistsListSelect>
-      {/* {<Card array={psychArray} />} */}
-      <PsychologistsListButton>Load more</PsychologistsListButton>
+      {<Card array={psychArray} />}
+      <PsychologistsListButton onClick={addPage}>
+        Load more
+      </PsychologistsListButton>
     </Container>
   );
 };
