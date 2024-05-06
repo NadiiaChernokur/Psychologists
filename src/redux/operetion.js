@@ -4,13 +4,9 @@ import {
   ref,
   get,
   set,
-  startAt,
-  child,
   orderByKey,
   limitToFirst,
   query,
-  startAfter,
-  equalTo,
 } from "firebase/database";
 
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
@@ -119,25 +115,6 @@ const app2 = initializeApp(firebaseConfig2, "app2");
 const userDatabase = getDatabase(app2);
 const auth = getAuth(app2);
 
-// export const getPsychologist = createAsyncThunk(
-//   "psychologists",
-//   async (page, thunkAPI) => {
-//     try {
-//       const psychRef = ref(database);
-//       console.log(psychRef);
-//       const snapshot = await get(psychRef);
-
-//       if (snapshot.exists()) {
-//         return snapshot.val();
-//       } else {
-//         console.log("No data available");
-//       }
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
-
 export const createUser = createAsyncThunk(
   "registration",
   async (data, thunkAPI) => {
@@ -215,3 +192,10 @@ export const login = createAsyncThunk("login", async (data, thunkAPI) => {
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+
+export const updateArray = () => {
+  return {
+    type: "update",
+    payload: [],
+  };
+};

@@ -4,6 +4,8 @@ import {
   getPsychologist,
   getPsychologistSort,
   login,
+  updateArray,
+  updateArrayAction,
 } from "./operetion";
 
 const initialState = {
@@ -40,10 +42,13 @@ const userLogin = (state, action) => {
   state.user = action.payload;
 };
 const psychChoice = (state, action) => {
-  console.log(action.payload);
   state.isLoading = false;
   state.error = null;
   state.psychologistsSort = action.payload;
+};
+const update = (state, action) => {
+  console.log("6666666666666");
+  state.psychologistsSort = [];
 };
 const autoSlice = createSlice({
   name: "psychologists",
@@ -61,7 +66,8 @@ const autoSlice = createSlice({
       .addCase(login.rejected, handleRejected)
       .addCase(getPsychologistSort.pending, handlePending)
       .addCase(getPsychologistSort.fulfilled, psychChoice)
-      .addCase(getPsychologistSort.rejected, handleRejected),
+      .addCase(getPsychologistSort.rejected, handleRejected)
+      .addCase(updateArray().type, update),
 });
 
 export const autoReducer = autoSlice.reducer;
