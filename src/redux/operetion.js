@@ -46,6 +46,65 @@ export const getPsychologist = createAsyncThunk(
   }
 );
 
+export const getPsychologistSort = createAsyncThunk(
+  "psychsort",
+  async (data, thunkAPI) => {
+    console.log(data);
+    try {
+      const psychRef = await get(ref(database, "/"));
+      const res = psychRef.val();
+      const resCopy = [...res];
+
+      // const popular = copy.sort((a, b) => b.rating - a.rating);
+      // console.log(popular);
+      // const noPopular = [...popular].reverse();
+      // const expensive = resCopy.sort(
+      //   (a, b) => a.price_per_hour - b.price_per_hour
+      // );
+      // const cheap = [...expensive].reverse();
+      // const alphabet = resCopy.sort((a, b) => {
+      //   const nameA = a.name.replace("Dr. ", "");
+      //   const nameB = b.name.replace("Dr. ", "");
+      //   return nameA.localeCompare(nameB);
+      // });
+      // const alphabetRev = [...alphabet].reverse();
+
+      switch (data) {
+        case "A to Z":
+          const alphabet = resCopy.sort((a, b) => {
+            const nameA = a.name.replace("Dr. ", "");
+            const nameB = b.name.replace("Dr. ", "");
+            return nameA.localeCompare(nameB);
+          });
+          return alphabet;
+
+        case "Z to A":
+          const alphabetRev = resCopy.sort((a, b) => {
+            const nameA = a.name.replace("Dr. ", "");
+            const nameB = b.name.replace("Dr. ", "");
+            return nameB.localeCompare(nameA);
+          });
+          return alphabetRev;
+
+        case "Less than 10$":
+          return resCopy.sort((a, b) => a.price_per_hour - b.price_per_hour);
+        case "Greater than 10$":
+          return resCopy.sort((a, b) => b.price_per_hour - a.price_per_hour);
+        case "Popular":
+          return resCopy.sort((a, b) => b.rating - a.rating);
+        case "Not popular":
+          return resCopy.sort((a, b) => a.rating - b.rating);
+        case "Show all":
+          return res;
+        default:
+          return res;
+      }
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 const firebaseConfig2 = {
   apiKey: "AIzaSyBBRSIDcuZEamZAUDHOkk8C-KBAYh4CgUM",
   authDomain: "psychologist-7ca39.firebaseapp.com",
