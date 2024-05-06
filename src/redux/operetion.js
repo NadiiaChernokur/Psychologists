@@ -1,6 +1,16 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, get, set } from "firebase/database";
-import firebase from "firebase/app";
+import {
+  getDatabase,
+  ref,
+  get,
+  set,
+  startAt,
+  child,
+  orderByKey,
+  limitToFirst,
+  query,
+} from "firebase/database";
+
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
@@ -20,6 +30,26 @@ const firebaseConfig1 = {
 const app1 = initializeApp(firebaseConfig1, "app1");
 const database = getDatabase(app1);
 
+export const getPsychologist = createAsyncThunk(
+  "psychologists",
+  async (page, thunkAPI) => {
+    try {
+      const psychRef = ref(database);
+      console.log(psychRef);
+      const psycRef = query(
+        psychRef,
+        orderByKey(),
+        limitToFirst(2) // Додатковий 1 запис для визначення наявності наступної сторінки
+      );
+      console.log(psycRef);
+      const snapshot = await get(psycRef);
+      console.log(snapshot.val());
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 const firebaseConfig2 = {
   apiKey: "AIzaSyBBRSIDcuZEamZAUDHOkk8C-KBAYh4CgUM",
   authDomain: "psychologist-7ca39.firebaseapp.com",
@@ -34,22 +64,24 @@ const app2 = initializeApp(firebaseConfig2, "app2");
 const userDatabase = getDatabase(app2);
 const auth = getAuth(app2);
 
-export const getPsychologist = createAsyncThunk(
-  "psychologists",
-  async (page, thunkAPI) => {
-    try {
-      const psychRef = ref(database);
-      const snapshot = await get(psychRef);
-      if (snapshot.exists()) {
-        return snapshot.val();
-      } else {
-        console.log("No data available");
-      }
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
+// export const getPsychologist = createAsyncThunk(
+//   "psychologists",
+//   async (page, thunkAPI) => {
+//     try {
+//       const psychRef = ref(database);
+//       console.log(psychRef);
+//       const snapshot = await get(psychRef);
+
+//       if (snapshot.exists()) {
+//         return snapshot.val();
+//       } else {
+//         console.log("No data available");
+//       }
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );
 
 export const createUser = createAsyncThunk(
   "registration",
@@ -59,35 +91,9 @@ export const createUser = createAsyncThunk(
       const usersRef = ref(userDatabase, "users");
       const usersArray = await get(usersRef);
       const result = usersArray.val();
-      console.log(result);
+
       if (result === null) {
         console.log("77777777");
-        const userCredential = await createUserWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
-        const user = userCredential.user;
-        const { accessToken, stsTokenManager } = user;
-        localStorage.setItem(
-          "tokenPsych",
-          JSON.stringify({
-            accessToken: accessToken,
-            stsTokenManager: stsTokenManager,
-          })
-        );
-        const userId = user.uid;
-        const userData = {
-          name: name,
-          email: user.email,
-          password: password,
-          accessToken: accessToken,
-          refreshToken: stsTokenManager.refreshToken,
-        };
-        console.log(userData);
-        await set(ref(userDatabase, `users/${userId}`), userData);
-
-        return { userId, ...userData };
       }
       Object.values(result).forEach((usemail) => {
         if (email === usemail.email) {

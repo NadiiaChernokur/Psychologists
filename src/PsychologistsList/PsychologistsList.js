@@ -12,14 +12,15 @@ const PsychologistsList = () => {
   const dispatch = useDispatch();
   const psychArray = useSelector((state) => state.psychologists);
   console.log(psychArray);
-
+  const page = 3;
   useEffect(() => {
     console.log("88888888");
-    if (psychArray.length > 0) {
-      return;
-    }
-    dispatch(getPsychologist());
-  }, [dispatch, psychArray.length]);
+    // if (psychArray.length > 0) {
+    //   return;
+    // }
+
+    dispatch(getPsychologist(page));
+  }, [dispatch]);
   return (
     <Container>
       <PsychologistsListSelect>
@@ -31,7 +32,7 @@ const PsychologistsList = () => {
         <option>Not popular</option>
         <option>Show all</option>
       </PsychologistsListSelect>
-      {<Card array={psychArray} />}
+      {/* {<Card array={psychArray} />} */}
       <PsychologistsListButton>Load more</PsychologistsListButton>
     </Container>
   );

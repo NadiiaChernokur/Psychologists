@@ -17,6 +17,7 @@ const handleRejected = (state, action) => {
   state.error = action.payload;
 };
 const handleGetPsychologist = (state, action) => {
+  console.log(action.payload);
   state.isLoading = false;
   state.error = null;
   state.psychologists = action.payload;

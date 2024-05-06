@@ -27,7 +27,7 @@ const Appointment = ({ doctor }) => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema), // Використовуємо yupResolver
+    resolver: yupResolver(schema), 
   });
 
   const onSubmit = (data) => {
