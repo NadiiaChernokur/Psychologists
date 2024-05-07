@@ -3,6 +3,7 @@ import Header from "./Header/Header";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 import { Suspense, lazy } from "react";
+import { Loader } from "./Loader.js";
 
 const MainPage = lazy(() => import("./MainPage/MainPage"));
 const PsychologistPage = lazy(() =>
@@ -15,7 +16,7 @@ const Registration = lazy(() => import("./Registration/Registration.js"));
 const App = () => {
   return (
     <>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Header />}>
             <Route index element={<MainPage />}></Route>

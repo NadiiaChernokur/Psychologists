@@ -74,7 +74,7 @@ const Card = ({ array }) => {
             <Rating>
               <PsychP>Psychologist</PsychP>
               <RatingDiv>
-                <svg width="22" height="22">
+                <svg width="16" height="16">
                   <use href={`${sprite}#star`}></use>
                 </svg>
                 <RatingP>Rating: {el.rating}</RatingP>
@@ -83,11 +83,11 @@ const Card = ({ array }) => {
                 </Price>
                 <FavButton onClick={() => addToFavorite(el.name)}>
                   {isFavorite(el.name) ? (
-                    <svg width="22" height="22">
+                    <svg width="26" height="26">
                       <use href={`${sprite}#hart`}></use>
                     </svg>
                   ) : (
-                    <svg width="22" height="22">
+                    <svg width="26" height="26">
                       <use href={`${sprite}#hartoff`}></use>
                     </svg>
                   )}

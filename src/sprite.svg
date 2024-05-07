@@ -44,11 +44,11 @@
   <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26" id="hartoff">
     <path d="M22.5766 4.99416C22.0233 4.44058 21.3663 4.00144 20.6433 3.70184C19.9202 3.40223 19.1452 3.24802 18.3625 3.24802C17.5798 3.24802 16.8047 3.40223 16.0817 3.70184C15.3586 4.00144 14.7016 4.44058 14.1483 4.99416L13 6.14249L11.8516 4.99416C10.734 3.87649 9.21809 3.2486 7.63747 3.2486C6.05685 3.2486 4.54097 3.87649 3.4233 4.99416C2.30563 6.11183 1.67773 7.62771 1.67773 9.20833C1.67773 10.7889 2.30563 12.3048 3.4233 13.4225L4.57163 14.5708L13 22.9992L21.4283 14.5708L22.5766 13.4225C23.1302 12.8692 23.5693 12.2122 23.869 11.4891C24.1686 10.766 24.3228 9.99102 24.3228 9.20833C24.3228 8.42563 24.1686 7.65061 23.869 6.92753C23.5693 6.20445 23.1302 5.54748 22.5766 4.99416Z" stroke="#191A15" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
   </symbol>
-  <svg width="0" height="0" class="hidden">
+  <!-- <svg width="0" height="0" class="hidden">
   <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 8" id="Group">
     <circle cx="4.5" cy="4" r="4" fill="#54BE96"></circle>
   </symbol>
-</svg>
+</svg> -->
 <svg width="0" height="0" class="hidden">
   <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" id="star">
     <g clip-path="url(#clip0_33_570)">
@@ -65,6 +65,12 @@
   <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" id="out">
     <path d="M24 8L8 24" stroke="#191a15" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
     <path d="M8 8L24 24" stroke="#191a15" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+  </symbol>
+</svg>
+<svg width="0" height="0" class="hidden">
+  <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" id="Group">
+    <circle cx="7" cy="7" r="7" fill="#FBFBFB"></circle>
+    <circle cx="6.99992" cy="7.00009" r="4.66667" fill="#38CD3E"></circle>
   </symbol>
 </svg>
 </svg>

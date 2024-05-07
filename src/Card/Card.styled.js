@@ -39,11 +39,13 @@ export const RatingDiv = styled.div`
   font-size: 16px;
   line-height: 150%;
   color: #191a15;
+  align-items: center;
 `;
 export const RatingP = styled.p`
   border-right: 2px solid rgba(84, 190, 150, 0.2);
   padding-right: 16px;
   margin-right: 16px;
+  margin-left: 8px;
 `;
 export const PriceSpan = styled.span`
   color: #38cd3e;
@@ -122,8 +124,6 @@ export const OnlineD = styled.div`
 `;
 export const FavButton = styled.button`
   background: none;
-  /* width: 22px;
-  height: 22px; */
   padding: 0;
   &:hover {
     background: none;
