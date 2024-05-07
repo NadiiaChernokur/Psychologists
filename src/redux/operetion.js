@@ -7,16 +7,10 @@ import {
   orderByKey,
   limitToFirst,
   query,
-  orderByChild,
-  orderByValue,
-  onValue,
-  startAt,
-  child,
 } from "firebase/database";
 
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
 
 const firebaseConfig1 = {
   apiKey: "AIzaSyDckWQWECL9IMvRADUlAGifTcrRXWFzCyI",

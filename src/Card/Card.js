@@ -24,15 +24,9 @@ import {
 import ReadMeButton from "./ReadMe";
 import sprite from "../sprite.svg";
 import { useDispatch } from "react-redux";
-import {
-  addFavorite,
-  getPsychologist,
-  getPsychologists,
-  removeFavoriteItem,
-} from "../redux/operetion";
+import { addFavorite, removeFavoriteItem } from "../redux/operetion";
 
 const Card = ({ array }) => {
-  console.log(array.length);
   const dispatch = useDispatch();
   const [clicks, setClicks] = useState({});
   const [favorites, setFavorites] = useState([]);
@@ -40,7 +34,6 @@ const Card = ({ array }) => {
   useEffect(() => {
     const storedFavorites =
       JSON.parse(localStorage.getItem("favoritesPsych")) || [];
-
     setFavorites(storedFavorites);
   }, []);
 
@@ -51,10 +44,9 @@ const Card = ({ array }) => {
     }));
   };
   const addToFavorite = (name) => {
-    console.log(name);
     const updatedFavorites = [...favorites];
     const index = updatedFavorites.indexOf(name);
-    console.log(index);
+
     if (index !== -1) {
       updatedFavorites.splice(index, 1);
       dispatch(removeFavoriteItem(name));
@@ -66,8 +58,6 @@ const Card = ({ array }) => {
     localStorage.setItem("favoritesPsych", JSON.stringify(updatedFavorites));
   };
   const isFavorite = (PName) => {
-    console.log(favorites);
-    console.log(PName);
     return favorites.includes(PName);
   };
   return (

@@ -11,18 +11,29 @@ import {
   LoginModalBackground,
   LoginModalContainer,
   LoginParagraf,
+  Out,
 } from "./LogIn.styled";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../redux/operetion";
+import sprite from "../sprite.svg";
+import { useNavigate } from "react-router-dom";
 
 const schema = yup.object().shape({
   email: yup.string().email().required(),
-  password: yup.string().required(),
+  password: yup.string().min(6).required(),
 });
 
 const LogIn = () => {
   const stateError = useSelector((state) => state.error);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      navigate("/");
+    }
+  });
+
   const {
     register,
     handleSubmit,
@@ -34,10 +45,29 @@ const LogIn = () => {
   const onSubmit = (data) => {
     dispatch(login(data));
     console.log(stateError);
+    if (stateError) {
+    } else {
+      navigate("/psychologists");
+    }
+  };
+  const modalClose = () => {
+    console.log("888888888");
+    navigate("/");
+  };
+
+  const handleBackgroundClick = (event) => {
+    if (event.target === event.currentTarget) {
+      navigate("/");
+    }
   };
   return (
-    <LoginModalBackground>
+    <LoginModalBackground onClick={handleBackgroundClick}>
       <LoginModalContainer>
+        <Out onClick={modalClose}>
+          <svg width="32" height="32">
+            <use href={`${sprite}#out`}></use>
+          </svg>
+        </Out>
         <LoginH>Log In</LoginH>
         <LoginParagraf>
           Welcome back! Please enter your credentials to access your account and

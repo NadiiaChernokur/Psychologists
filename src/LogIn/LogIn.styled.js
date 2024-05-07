@@ -20,6 +20,7 @@ export const LoginModalContainer = styled.div`
   width: 565px;
   height: 509px;
   padding: 64px;
+  position: relative;
 `;
 export const LoginH = styled.h3`
   font-weight: 500;
@@ -56,4 +57,11 @@ export const LoginButton = styled.button`
   border-radius: 30px;
   padding: 16px 196px;
   margin-top: 20px;
+`;
+export const Out = styled.button`
+  position: absolute;
+  right: 29px;
+  top: 26px;
+  background: none;
+  padding: 0;
 `;

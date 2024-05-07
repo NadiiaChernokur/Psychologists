@@ -1,9 +1,7 @@
 import { NavLink, Outlet } from "react-router-dom";
 import {
-  Button,
   Buttons,
   HeaderContainer,
-  HeaderParagraf,
   Logo,
   LogoDiv,
   LogoSpan,

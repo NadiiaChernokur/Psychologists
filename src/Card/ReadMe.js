@@ -13,7 +13,6 @@ import {
 import Appointment from "../Appoinment/Appointment";
 
 const ReadMeButton = ({ array, doctor }) => {
-  console.log(doctor);
   const [modal, setModal] = useState(false);
   const ShowModal = () => {
     setModal(true);
