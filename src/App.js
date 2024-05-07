@@ -8,7 +8,7 @@ const MainPage = lazy(() => import("./MainPage/MainPage"));
 const PsychologistPage = lazy(() =>
   import("./PsychologistsList/PsychologistsList")
 );
-// const Favorits = lazy(() => import("./FavoriteList/FavoritList"));
+const Favorits = lazy(() => import("./FavoriteList/FavoriteList.js"));
 const LogIn = lazy(() => import("./LogIn/LogIn.js"));
 const Registration = lazy(() => import("./Registration/Registration.js"));
 
@@ -20,7 +20,7 @@ const App = () => {
           <Route path="/" element={<Header />}>
             <Route index element={<MainPage />}></Route>
             <Route path="/psychologists" element={<PsychologistPage />}></Route>
-            {/* <Route path="/favorite" element={<Favorits />}></Route> */}
+            <Route path="/favorite" element={<Favorits />}></Route>
             <Route path="/login" element={<LogIn />}></Route>
             <Route path="/registration" element={<Registration />}></Route>
             <Route path="*" element={<Navigate to="/" />} />

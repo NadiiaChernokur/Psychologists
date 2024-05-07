@@ -213,10 +213,11 @@ export const addFavorite = createAsyncThunk(
   async (name, thunkAPI) => {
     try {
       const psychRef = ref(database, "/");
-      console.log(psychRef);
+
       const snapshot = await get(psychRef);
-      console.log(snapshot.val());
+
       const selected = snapshot.val().find((el) => el.name === name);
+
       console.log(selected);
       return selected;
     } catch (error) {
@@ -225,9 +226,9 @@ export const addFavorite = createAsyncThunk(
   }
 );
 
-export const removeFavoriteItem = (id) => {
+export const removeFavoriteItem = (name) => {
   return {
     type: "removeFavoriteItem",
-    payload: id,
+    payload: name,
   };
 };

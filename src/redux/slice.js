@@ -56,13 +56,14 @@ const addFavoriteArrayFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
   state.favoriteArray.push(action.payload);
+
   // state.favoriteArray = [];
 };
 const removeFavoriteArrayFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
   state.favoriteArray = state.favoriteArray.filter(
-    (el) => (auto) => auto._id !== action.payload
+    (el) => el.name !== action.payload
   );
 };
 const autoSlice = createSlice({
