@@ -20,6 +20,7 @@ export const RegistrationModalContainer = styled.div`
   width: 565px;
   height: 579px;
   padding: 64px;
+  position: relative;
 `;
 export const RegistrationLoginH = styled.h3`
   font-weight: 500;

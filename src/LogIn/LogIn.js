@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -28,11 +28,17 @@ const LogIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") {
-      navigate("/");
-    }
-  });
+  useEffect(() => {
+    const handleEscapeKey = (e) => {
+      if (e.key === "Escape") {
+        navigate("/");
+      }
+    };
+    document.addEventListener("keydown", handleEscapeKey);
+    return () => {
+      document.removeEventListener("keydown", handleEscapeKey);
+    };
+  }, []);
 
   const {
     register,
@@ -51,7 +57,6 @@ const LogIn = () => {
     }
   };
   const modalClose = () => {
-    console.log("888888888");
     navigate("/");
   };
 
