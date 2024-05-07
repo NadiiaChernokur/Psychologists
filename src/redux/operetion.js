@@ -7,6 +7,11 @@ import {
   orderByKey,
   limitToFirst,
   query,
+  orderByChild,
+  orderByValue,
+  onValue,
+  startAt,
+  child,
 } from "firebase/database";
 
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
@@ -32,9 +37,24 @@ export const getPsychologist = createAsyncThunk(
   "psychologists",
   async (page, thunkAPI) => {
     try {
-      const psychRef = ref(database);
+      // const psychRef = ref(database, "/");
+      // onValue(psychRef, (snapshot) => {
+      //   const psychData = snapshot.val();
+      //   console.log(psychData);
+      //   const ratings = [];
+      //   for (const key in psychData) {
+      //     if (Object.hasOwnProperty.call(psychData, key)) {
+      //       ratings.push(psychData[key].rating);
+      //     }
+      //   }
+      //   console.log(ratings);
+      // });
+      const psychRef = ref(database, "/");
       const psycRef = query(psychRef, orderByKey(), limitToFirst(page));
+
+      console.log(psycRef);
       const snapshot = await get(psycRef);
+      console.log(snapshot.val());
       return snapshot.val();
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -47,23 +67,11 @@ export const getPsychologistSort = createAsyncThunk(
   async (data, thunkAPI) => {
     console.log(data);
     try {
-      const psychRef = await get(ref(database, "/"));
+      const psychRef = await get(ref(database));
       const res = psychRef.val();
-      const resCopy = [...res];
-
-      // const popular = copy.sort((a, b) => b.rating - a.rating);
-      // console.log(popular);
-      // const noPopular = [...popular].reverse();
-      // const expensive = resCopy.sort(
-      //   (a, b) => a.price_per_hour - b.price_per_hour
-      // );
-      // const cheap = [...expensive].reverse();
-      // const alphabet = resCopy.sort((a, b) => {
-      //   const nameA = a.name.replace("Dr. ", "");
-      //   const nameB = b.name.replace("Dr. ", "");
-      //   return nameA.localeCompare(nameB);
-      // });
-      // const alphabetRev = [...alphabet].reverse();
+      console.log(res);
+      const resCopy = Array.from(res);
+      console.log(resCopy);
 
       switch (data) {
         case "A to Z":

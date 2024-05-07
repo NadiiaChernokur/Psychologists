@@ -42,6 +42,7 @@ const userLogin = (state, action) => {
   state.user = action.payload;
 };
 const psychChoice = (state, action) => {
+  console.log("555555555");
   state.isLoading = false;
   state.error = null;
   state.psychologistsSort = action.payload;

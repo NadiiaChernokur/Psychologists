@@ -26,6 +26,7 @@ import { useDispatch } from "react-redux";
 import { getPsychologist, getPsychologists } from "../redux/operetion";
 
 const Card = ({ array }) => {
+  console.log(array.length);
   const [clicks, setClicks] = useState({});
 
   const handleClick = (index) => {
