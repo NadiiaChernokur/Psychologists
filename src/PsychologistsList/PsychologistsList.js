@@ -20,8 +20,9 @@ const PsychologistsList = () => {
   const [sortArrayPsych, setSortArrayPsych] = useState([]);
   const psychArray = useSelector((state) => state.psychologists);
   const psychSortArray = useSelector((state) => state.psychologistsSort);
+  const favor = useSelector((state) => state.favoriteArray);
 
-  console.log(psychSortArray);
+  console.log(favor);
 
   useEffect(() => {
     console.log("222222222");
@@ -57,6 +58,9 @@ const PsychologistsList = () => {
   };
   const sortLoadMore = () => {
     console.log("fffffffff");
+    if (sortArrayPsych) {
+      console.log("ppppppp");
+    }
     setPageSort((prev) => prev + 3);
   };
   return (
@@ -71,7 +75,7 @@ const PsychologistsList = () => {
         <option>Not popular</option>
       </PsychologistsListSelect>
       {<Card array={sortPsych ? sortArrayPsych : psychArray} />}
-      {sortArrayPsych ? (
+      {sortArrayPsych.length > 0 ? (
         <PsychologistsListButton onClick={sortLoadMore}>
           Load more
         </PsychologistsListButton>

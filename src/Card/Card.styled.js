@@ -120,3 +120,12 @@ export const Online = styled.svg`
 export const OnlineD = styled.div`
   position: relative;
 `;
+export const FavButton = styled.button`
+  background: none;
+  /* width: 22px;
+  height: 22px; */
+  padding: 0;
+  &:hover {
+    background: none;
+  }
+`;

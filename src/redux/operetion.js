@@ -207,3 +207,27 @@ export const updateArray = () => {
     payload: [],
   };
 };
+
+export const addFavorite = createAsyncThunk(
+  "addFavorite",
+  async (name, thunkAPI) => {
+    try {
+      const psychRef = ref(database, "/");
+      console.log(psychRef);
+      const snapshot = await get(psychRef);
+      console.log(snapshot.val());
+      const selected = snapshot.val().find((el) => el.name === name);
+      console.log(selected);
+      return selected;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const removeFavoriteItem = (id) => {
+  return {
+    type: "removeFavoriteItem",
+    payload: id,
+  };
+};

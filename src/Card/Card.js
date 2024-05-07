@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   About,
   CardImg,
@@ -7,6 +7,7 @@ import {
   ExperienceContainer,
   ExperienceDiv,
   ExperienceSpan,
+  FavButton,
   List,
   Name,
   Online,
@@ -23,17 +24,51 @@ import {
 import ReadMeButton from "./ReadMe";
 import sprite from "../sprite.svg";
 import { useDispatch } from "react-redux";
-import { getPsychologist, getPsychologists } from "../redux/operetion";
+import {
+  addFavorite,
+  getPsychologist,
+  getPsychologists,
+  removeFavoriteItem,
+} from "../redux/operetion";
 
 const Card = ({ array }) => {
   console.log(array.length);
+  const dispatch = useDispatch();
   const [clicks, setClicks] = useState({});
+  const [favorites, setFavorites] = useState([]);
+
+  useEffect(() => {
+    const storedFavorites =
+      JSON.parse(localStorage.getItem("favoritesPsych")) || [];
+
+    setFavorites(storedFavorites);
+  }, []);
 
   const handleClick = (index) => {
     setClicks((prevClicks) => ({
       ...prevClicks,
       [index]: !prevClicks[index],
     }));
+  };
+  const addToFavorite = (name) => {
+    console.log(name);
+    const updatedFavorites = [...favorites];
+    const index = updatedFavorites.indexOf(name);
+    console.log(index);
+    if (index !== -1) {
+      updatedFavorites.splice(index, 1);
+      dispatch(removeFavoriteItem(name));
+    } else {
+      updatedFavorites.push(name);
+      dispatch(addFavorite(name));
+    }
+    setFavorites(updatedFavorites);
+    localStorage.setItem("favoritesPsych", JSON.stringify(updatedFavorites));
+  };
+  const isFavorite = (PName) => {
+    console.log(favorites);
+    console.log(PName);
+    return favorites.includes(PName);
   };
   return (
     <UlList>
@@ -56,12 +91,17 @@ const Card = ({ array }) => {
                 <Price>
                   Price / 1 hour:<PriceSpan> {el.price_per_hour}$</PriceSpan>
                 </Price>
-                <svg width="22" height="22">
-                  <use href={`${sprite}#hartoff`}></use>
-                </svg>
-                {/* <svg width="22" height="22">
-                  <use href={`${sprite}#hart`}></use>
-                </svg> */}
+                <FavButton onClick={() => addToFavorite(el.name)}>
+                  {isFavorite(el.name) ? (
+                    <svg width="22" height="22">
+                      <use href={`${sprite}#hart`}></use>
+                    </svg>
+                  ) : (
+                    <svg width="22" height="22">
+                      <use href={`${sprite}#hartoff`}></use>
+                    </svg>
+                  )}
+                </FavButton>
               </RatingDiv>
             </Rating>
             <Name>{el.name}</Name>

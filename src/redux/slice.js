@@ -1,17 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  addFavorite,
   createUser,
   getPsychologist,
   getPsychologistSort,
   login,
+  removeFavoriteItem,
   updateArray,
-  updateArrayAction,
 } from "./operetion";
 
 const initialState = {
   psychologists: [],
   user: {},
   psychologistsSort: [],
+  favoriteArray: [],
   isLoading: false,
   error: null,
 };
@@ -42,14 +44,26 @@ const userLogin = (state, action) => {
   state.user = action.payload;
 };
 const psychChoice = (state, action) => {
-  console.log("555555555");
   state.isLoading = false;
   state.error = null;
   state.psychologistsSort = action.payload;
 };
 const update = (state, action) => {
-  console.log("6666666666666");
   state.psychologistsSort = [];
+};
+
+const addFavoriteArrayFulfilled = (state, action) => {
+  state.isLoading = false;
+  state.error = null;
+  state.favoriteArray.push(action.payload);
+  // state.favoriteArray = [];
+};
+const removeFavoriteArrayFulfilled = (state, action) => {
+  state.isLoading = false;
+  state.error = null;
+  state.favoriteArray = state.favoriteArray.filter(
+    (el) => (auto) => auto._id !== action.payload
+  );
 };
 const autoSlice = createSlice({
   name: "psychologists",
@@ -68,7 +82,11 @@ const autoSlice = createSlice({
       .addCase(getPsychologistSort.pending, handlePending)
       .addCase(getPsychologistSort.fulfilled, psychChoice)
       .addCase(getPsychologistSort.rejected, handleRejected)
-      .addCase(updateArray().type, update),
+      .addCase(updateArray().type, update)
+      .addCase(addFavorite.pending, handlePending)
+      .addCase(addFavorite.fulfilled, addFavoriteArrayFulfilled)
+      .addCase(addFavorite.rejected, handleRejected)
+      .addCase(removeFavoriteItem().type, removeFavoriteArrayFulfilled),
 });
 
 export const autoReducer = autoSlice.reducer;
