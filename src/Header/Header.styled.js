@@ -40,3 +40,6 @@ export const Button = styled.button`
   border-radius: 30px;
   padding: 1.3vh 2vw;
 `;
+export const OutletDiv = styled.div`
+  background: rgba(84, 190, 150, 0.2);
+`;

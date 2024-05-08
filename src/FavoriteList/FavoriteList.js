@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-import Card from "../Card/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { addFavorite, removeFavoriteItem } from "../redux/operetion";
-
 import sprite from "../sprite.svg";
 import ReadMeButton from "../Card/ReadMe";
 import {
@@ -27,6 +25,7 @@ import {
   RatingP,
   ReadMe,
 } from "../Card/Card.styled";
+import { FavContainer } from "./FavoriteList.styled";
 
 const FavoriteList = () => {
   const [array, setArray] = useState([]);
@@ -35,15 +34,12 @@ const FavoriteList = () => {
   const favArray = useSelector((state) => state.favoriteArray);
   const dispatch = useDispatch();
 
-  console.log(favArray);
-
   useEffect(() => {
     setArray(favArray);
   }, [favArray]);
 
   useEffect(() => {
     const local = JSON.parse(localStorage.getItem("favoritesPsych")) || [];
-
     setFavorites(local);
     return;
   }, []);
@@ -62,65 +58,67 @@ const FavoriteList = () => {
     }));
   };
   return (
-    <UlList>
-      {array.map((el, index) => (
-        <List key={el.name}>
-          <OnlineD>
-            <Online width="14" height="14">
-              <use href={`${sprite}#Group`}></use>
-            </Online>
-            <CardImg src={el.avatar_url} alt={el.name}></CardImg>
-          </OnlineD>
-          <CardInformation>
-            <Rating>
-              <PsychP>Psychologist</PsychP>
-              <RatingDiv>
-                <svg width="22" height="22">
-                  <use href={`${sprite}#star`}></use>
-                </svg>
-                <RatingP>Rating: {el.rating}</RatingP>
-                <Price>
-                  Price / 1 hour:<PriceSpan> {el.price_per_hour}$</PriceSpan>
-                </Price>
-                <FavButton onClick={() => removeToFavirite(el.name)}>
+    <FavContainer>
+      <UlList>
+        {array.map((el, index) => (
+          <List key={el.name}>
+            <OnlineD>
+              <Online width="14" height="14">
+                <use href={`${sprite}#Group`}></use>
+              </Online>
+              <CardImg src={el.avatar_url} alt={el.name}></CardImg>
+            </OnlineD>
+            <CardInformation>
+              <Rating>
+                <PsychP>Psychologist</PsychP>
+                <RatingDiv>
                   <svg width="22" height="22">
-                    <use href={`${sprite}#hart`}></use>
+                    <use href={`${sprite}#star`}></use>
                   </svg>
-                </FavButton>
-              </RatingDiv>
-            </Rating>
-            <Name>{el.name}</Name>
-            <ExperienceDiv>
-              <ExperienceContainer>
-                <Experience>
-                  Experience: <ExperienceSpan>{el.experience}</ExperienceSpan>
-                </Experience>
-                <Experience>
-                  License:
-                  <ExperienceSpan> {el.license}</ExperienceSpan>
-                </Experience>
-              </ExperienceContainer>
-              <ExperienceContainer>
-                <Experience>
-                  Specialization:
-                  <ExperienceSpan> {el.specialization}</ExperienceSpan>
-                </Experience>
-                <Experience>
-                  Initial_consultation:
-                  <ExperienceSpan> {el.initial_consultation}</ExperienceSpan>
-                </Experience>
-              </ExperienceContainer>
-            </ExperienceDiv>
-            <About>{el.about}</About>
-            {!clicks[index] && (
-              <ReadMe onClick={() => handleClick(index)}>Read more</ReadMe>
-            )}
+                  <RatingP>Rating: {el.rating}</RatingP>
+                  <Price>
+                    Price / 1 hour:<PriceSpan> {el.price_per_hour}$</PriceSpan>
+                  </Price>
+                  <FavButton onClick={() => removeToFavirite(el.name)}>
+                    <svg width="22" height="22">
+                      <use href={`${sprite}#hart`}></use>
+                    </svg>
+                  </FavButton>
+                </RatingDiv>
+              </Rating>
+              <Name>{el.name}</Name>
+              <ExperienceDiv>
+                <ExperienceContainer>
+                  <Experience>
+                    Experience: <ExperienceSpan>{el.experience}</ExperienceSpan>
+                  </Experience>
+                  <Experience>
+                    License:
+                    <ExperienceSpan> {el.license}</ExperienceSpan>
+                  </Experience>
+                </ExperienceContainer>
+                <ExperienceContainer>
+                  <Experience>
+                    Specialization:
+                    <ExperienceSpan> {el.specialization}</ExperienceSpan>
+                  </Experience>
+                  <Experience>
+                    Initial_consultation:
+                    <ExperienceSpan> {el.initial_consultation}</ExperienceSpan>
+                  </Experience>
+                </ExperienceContainer>
+              </ExperienceDiv>
+              <About>{el.about}</About>
+              {!clicks[index] && (
+                <ReadMe onClick={() => handleClick(index)}>Read more</ReadMe>
+              )}
 
-            {clicks[index] && <ReadMeButton array={el.reviews} doctor={el} />}
-          </CardInformation>
-        </List>
-      ))}
-    </UlList>
+              {clicks[index] && <ReadMeButton array={el.reviews} doctor={el} />}
+            </CardInformation>
+          </List>
+        ))}
+      </UlList>
+    </FavContainer>
   );
 };
 

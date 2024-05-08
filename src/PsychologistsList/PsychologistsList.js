@@ -21,14 +21,10 @@ const PsychologistsList = () => {
   const [sortArrayPsych, setSortArrayPsych] = useState([]);
   const psychArray = useSelector((state) => state.psychologists);
   const psychSortArray = useSelector((state) => state.psychologistsSort);
-  const favor = useSelector((state) => state.favoriteArray);
-
-  console.log(favor);
+  // const favor = useSelector((state) => state.favoriteArray);
 
   useEffect(() => {
-    console.log("222222222");
     if (psychSortArray.length > 0) {
-      console.log("222222222");
       const firstThreeElements = psychSortArray.slice(0, pageSort);
       console.log(firstThreeElements);
       setSortArrayPsych(firstThreeElements);
@@ -36,13 +32,10 @@ const PsychologistsList = () => {
   }, [pageSort, psychSortArray]);
 
   useEffect(() => {
-    console.log("88888888");
     if (sortPsych) {
-      console.log("1111111111");
       return;
     }
     if (!sortPsych) {
-      console.log("777777777777");
       dispatch(updateArray());
     }
 
@@ -58,10 +51,6 @@ const PsychologistsList = () => {
     dispatch(getPsychologistSort(selectedValue));
   };
   const sortLoadMore = () => {
-    console.log("fffffffff");
-    if (sortArrayPsych) {
-      console.log("ppppppp");
-    }
     setPageSort((prev) => prev + 3);
   };
   return (

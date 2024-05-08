@@ -5,6 +5,7 @@ import {
   Logo,
   LogoDiv,
   LogoSpan,
+  OutletDiv,
   Pages,
 } from "./Header.styled";
 
@@ -29,7 +30,9 @@ const Header = () => {
           <NavLink to="/registration">Registration</NavLink>
         </Buttons>
       </HeaderContainer>
-      <Outlet />
+      <OutletDiv>
+        <Outlet />
+      </OutletDiv>
     </>
   );
 };

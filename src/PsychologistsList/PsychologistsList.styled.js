@@ -1,7 +1,7 @@
 import styled from "styled-components";
 export const Container = styled.div`
   margin: auto;
-  margin-top: 64px;
+  padding-top: 64px;
   max-width: 1184px;
   display: flex;
   flex-direction: column;
@@ -22,7 +22,7 @@ export const PsychologistsListButton = styled.button`
   border-radius: 30px;
   padding: 14px 48px;
   width: 176px;
-  margin: auto;
+  margin: 64px auto;
 `;
 export const Filter = styled.p`
   font-weight: 500;
