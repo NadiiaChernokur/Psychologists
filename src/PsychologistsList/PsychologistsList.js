@@ -16,7 +16,7 @@ import {
 const PsychologistsList = () => {
   const dispatch = useDispatch();
   const [page, setPage] = useState(3);
-  const [pageSort, setPageSort] = useState(3);
+  // const [pageSort, setPageSort] = useState(3);
   const [sortPsych, setSortPsych] = useState(false);
   const [sortArrayPsych, setSortArrayPsych] = useState([]);
   const psychArray = useSelector((state) => state.psychologists);
@@ -25,11 +25,12 @@ const PsychologistsList = () => {
 
   useEffect(() => {
     if (psychSortArray.length > 0) {
-      const firstThreeElements = psychSortArray.slice(0, pageSort);
+      // const firstThreeElements = psychSortArray.slice(0, pageSort);
+      const firstThreeElements = psychSortArray.slice(0, page);
       console.log(firstThreeElements);
       setSortArrayPsych(firstThreeElements);
     }
-  }, [pageSort, psychSortArray]);
+  }, [page, psychSortArray]);
 
   useEffect(() => {
     if (sortPsych) {
@@ -47,12 +48,13 @@ const PsychologistsList = () => {
   };
   const handleOptionChange = (event) => {
     const selectedValue = event.target.value;
+    setPage(3);
     setSortPsych(true);
     dispatch(getPsychologistSort(selectedValue));
   };
-  const sortLoadMore = () => {
-    setPageSort((prev) => prev + 3);
-  };
+  // const sortLoadMore = () => {
+  //   setPage((prev) => prev + 3);
+  // };
   return (
     <Container>
       <Filter>Filters</Filter>
@@ -66,15 +68,15 @@ const PsychologistsList = () => {
         <option>Not popular</option>
       </PsychologistsListSelect>
       {<Card array={sortPsych ? sortArrayPsych : psychArray} />}
-      {sortArrayPsych.length > 0 ? (
+      {/* {sortArrayPsych.length > 0 ? (
         <PsychologistsListButton onClick={sortLoadMore}>
           Load more
         </PsychologistsListButton>
-      ) : (
-        <PsychologistsListButton onClick={addPage}>
-          Load more
-        </PsychologistsListButton>
-      )}
+      ) : ( */}
+      <PsychologistsListButton onClick={addPage}>
+        Load more
+      </PsychologistsListButton>
+      {/* )} */}
     </Container>
   );
 };

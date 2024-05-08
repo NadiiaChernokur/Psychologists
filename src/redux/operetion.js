@@ -181,19 +181,7 @@ export const login = createAsyncThunk("login", async (data, thunkAPI) => {
       console.log("errooooooooooooooooor");
       throw new Error("This e-mail address is not registered");
     }
-    // Object.values(result).find((user) => {
-    //   if (user.email === email) {
-    //     console.log(email);
-    //     console.log(user.email);
-    //     const usPassword = user.password;
-    //     if (usPassword !== password) {
-    //       console.log(usPassword);
-    //       throw new Error("Invalid password");
-    //     }
-    //   } else {
-    //     throw new Error("This e-mail address is not registered");
-    //   }
-    // });
+
     const foundUser = Object.values(result).find(
       (user) => user.email === email
     );
@@ -205,16 +193,12 @@ export const login = createAsyncThunk("login", async (data, thunkAPI) => {
     if (foundUser.password !== password) {
       throw new Error("Invalid password");
     }
-    // const usPassword = user.password;
-    // if (password !== usPassword) {
-    //   console.log(usPassword);
-    //   throw new Error("Invalid password");
-    // }
+
     localStorage.setItem(
       "tokenPsych",
       JSON.stringify({
         accessToken: foundUser.accessToken,
-        stsTokenManager: foundUser.stsTokenManager,
+        refreshToken: foundUser.refreshToken,
       })
     );
     return foundUser;
