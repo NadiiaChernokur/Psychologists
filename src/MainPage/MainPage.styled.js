@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import foto from "../../src/imagemain.jpg";
 export const MainPageContainer = styled.main`
-  background-color: blueviolet;
+  background: linear-gradient(to right, #ebfcf8, rgba(84, 190, 150, 0.2));
   width: 100vw;
   height: 88vh;
   padding: 12vh 10vw;
@@ -41,8 +41,10 @@ export const Text2 = styled.p`
 `;
 export const MainButton = styled.button`
   border-radius: 30px;
-  width: 25%;
-  min-width: 120px;
+  width: 235px;
+  padding: 18px 50px;
+  display: flex;
+  gap: 18px;
 `;
 export const Img = styled.div`
   background-image: url(${foto});
@@ -62,6 +64,13 @@ export const Blue = styled.div`
   top: 38%;
   left: -6%;
   rotate: 62deg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Question = styled.svg`
+  rotate: -66deg;
 `;
 export const Orange = styled.div`
   background-color: #fbc75e;
@@ -76,9 +85,9 @@ export const Orange = styled.div`
 export const Amount = styled.div`
   background-color: #54be96;
   box-sizing: border-box;
-  width: 20vw;
-  height: 15vh;
-  padding: 4%;
+  width: 311px;
+  height: 118px;
+  padding: 32px;
   top: 70%;
   left: -18%;
   border-radius: 10px;
@@ -86,15 +95,28 @@ export const Amount = styled.div`
   min-width: 200px;
   display: flex;
   align-items: center;
-  gap: 3%;
+  gap: 16px;
 `;
 export const Chek = styled.div`
   background-color: #fbfbfb;
-  width: 3vw;
-  height: 3vw;
-  border-radius: 8%;
+  width: 54px;
+  height: 54px;
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 export const Experienced = styled.div`
   white-space: nowrap;
   font-size: clamp(10px, 5vw, 14px);
+`;
+export const ExperiencedPsych = styled.p`
+  font-weight: 400;
+  font-size: 14px;
+  color: rgba(251, 251, 251, 0.5);
+`;
+export const ExperiencedNamber = styled.p`
+  font-weight: 700;
+  font-size: 24px;
+  color: #fbfbfb;
 `;

@@ -13,8 +13,11 @@ import {
   People,
 } from "./Header.styled";
 import sprite from "../sprite.svg";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const user = useSelector((state) => state.user);
+  console.log(user);
   return (
     <>
       <HeaderContainer>
@@ -38,7 +41,7 @@ const Header = () => {
           <People width="16" height="16">
             <use href={`${sprite}#Vector`}></use>
           </People>
-          <Name>Name</Name>
+          <Name>{user.name}</Name>
           <LogoutButton>
             <p>Log out</p>
           </LogoutButton>

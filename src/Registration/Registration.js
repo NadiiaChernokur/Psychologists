@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -16,6 +16,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Out } from "../LogIn/LogIn.styled";
 import sprite from "../sprite.svg";
+import { unwrapResult } from "@reduxjs/toolkit";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const schema = yup.object().shape({
   name: yup.string().required(),
@@ -25,8 +29,16 @@ const schema = yup.object().shape({
 
 const Registration = () => {
   const stateError = useSelector((state) => state.error);
+  const [error, setError] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  console.log(stateError);
+  useEffect(() => {
+    console.log("llllllllllll");
+    if (stateError !== null) {
+      setError(stateError);
+    }
+  }, [stateError]);
 
   useEffect(() => {
     const handleEscapeKey = (e) => {
@@ -46,11 +58,16 @@ const Registration = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const onSubmit = (data) => {
-    dispatch(createUser(data));
-
+  const onSubmit = async (data) => {
+    const resultAction = await dispatch(createUser(data));
+    console.log(resultAction);
+    console.log("ooooooooooo");
     localStorage.setItem("emailPsych", JSON.stringify(data.email));
-    if (stateError.includes("Log in")) {
+    if (error !== null) {
+      console.log("kkkkkkkkkkkkk");
+      console.log(error);
+      toast(error);
+    } else {
       navigate("/login");
     }
   };
@@ -66,6 +83,7 @@ const Registration = () => {
   };
   return (
     <RegistrationModalBackground onClick={handleBackgroundClick}>
+      <ToastContainer toastStyle={{ background: "#fc0317", color: "white" }} />
       <RegistrationModalContainer>
         <Out onClick={modalClose}>
           <svg width="32" height="32">

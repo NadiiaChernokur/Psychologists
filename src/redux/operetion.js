@@ -125,12 +125,13 @@ export const createUser = createAsyncThunk(
       const usersRef = ref(userDatabase, "users");
       const usersArray = await get(usersRef);
       const result = usersArray.val();
-
-      if (result === null) {
-        console.log("77777777");
-      }
+      console.log(result);
+      // if (result === null) {
+      //   console.log("77777777");
+      // }
       Object.values(result).forEach((usemail) => {
         if (email === usemail.email) {
+          console.log("77777777");
           throw new Error("This address already exists. Log in");
         }
       });
@@ -139,15 +140,17 @@ export const createUser = createAsyncThunk(
         email,
         password
       );
+
       const user = userCredential.user;
+      console.log(user);
       const { accessToken, stsTokenManager } = user;
-      localStorage.setItem(
-        "tokenPsych",
-        JSON.stringify({
-          accessToken: accessToken,
-          stsTokenManager: stsTokenManager,
-        })
-      );
+      // localStorage.setItem(
+      //   "tokenPsych",
+      //   JSON.stringify({
+      //     accessToken: accessToken,
+      //     stsTokenManager: stsTokenManager,
+      //   })
+      // );
       const userId = user.uid;
       const userData = {
         name: name,
@@ -161,6 +164,7 @@ export const createUser = createAsyncThunk(
 
       return { userId, ...userData };
     } catch (error) {
+      console.log(error);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -174,22 +178,46 @@ export const login = createAsyncThunk("login", async (data, thunkAPI) => {
     const result = usersArray.val();
     console.log(result);
     if (result === null) {
+      console.log("errooooooooooooooooor");
       throw new Error("This e-mail address is not registered");
     }
-    Object.values(result).forEach((user) => {
-      if (email === user.email) {
-        console.log(email);
-        console.log(user.email);
-        const usPassword = user.password;
+    // Object.values(result).find((user) => {
+    //   if (user.email === email) {
+    //     console.log(email);
+    //     console.log(user.email);
+    //     const usPassword = user.password;
+    //     if (usPassword !== password) {
+    //       console.log(usPassword);
+    //       throw new Error("Invalid password");
+    //     }
+    //   } else {
+    //     throw new Error("This e-mail address is not registered");
+    //   }
+    // });
+    const foundUser = Object.values(result).find(
+      (user) => user.email === email
+    );
+    console.log(foundUser);
+    if (!foundUser) {
+      throw new Error("This e-mail address is not registered");
+    }
 
-        if (password !== usPassword) {
-          throw new Error("Invalid password");
-        }
-      } else {
-        throw new Error("This e-mail address is not registered");
-      }
-      return user;
-    });
+    if (foundUser.password !== password) {
+      throw new Error("Invalid password");
+    }
+    // const usPassword = user.password;
+    // if (password !== usPassword) {
+    //   console.log(usPassword);
+    //   throw new Error("Invalid password");
+    // }
+    localStorage.setItem(
+      "tokenPsych",
+      JSON.stringify({
+        accessToken: foundUser.accessToken,
+        stsTokenManager: foundUser.stsTokenManager,
+      })
+    );
+    return foundUser;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }

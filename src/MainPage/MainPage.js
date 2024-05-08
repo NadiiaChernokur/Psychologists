@@ -1,20 +1,31 @@
+import { useNavigate } from "react-router-dom";
 import {
   Amount,
   Blue,
   Chek,
   Experienced,
+  ExperiencedNamber,
+  ExperiencedPsych,
   Img,
   LeftContainer,
   MainButton,
   MainPageContainer,
   Orange,
+  Question,
   RigchtContainer,
   Text,
   Text2,
   TextSpan,
 } from "./MainPage.styled";
+import sprite from "../sprite.svg";
+import { useSelector } from "react-redux";
 
 const MainPage = () => {
+  const navigate = useNavigate();
+  const user = useSelector((state) => state.user);
+  const toShowPsychologists = () => {
+    navigate("/psychologists");
+  };
   return (
     <MainPageContainer>
       <LeftContainer>
@@ -25,17 +36,30 @@ const MainPage = () => {
           We help you to reveal your potential, overcome challenges and find a
           guide in your own life with the help of our experienced psychologists.
         </Text2>
-        <MainButton>Get started</MainButton>
+        <MainButton onClick={toShowPsychologists}>
+          <p> Get started</p>
+          <svg width="16" height="16">
+            <use href={`${sprite}#Arrow`}></use>
+          </svg>
+        </MainButton>
       </LeftContainer>
       <RigchtContainer>
         <Img></Img>
-        <Blue></Blue>
+        <Blue>
+          <Question width="10" height="17">
+            <use href={`${sprite}#question`}></use>
+          </Question>
+        </Blue>
         <Orange></Orange>
         <Amount>
-          <Chek></Chek>
+          <Chek>
+            <svg width="30" height="30">
+              <use href={`${sprite}#fe_check`}></use>
+            </svg>
+          </Chek>
           <Experienced>
-            <p>Experienced psychologists</p>
-            <p>15,000</p>
+            <ExperiencedPsych>Experienced psychologists</ExperiencedPsych>
+            <ExperiencedNamber>15,000</ExperiencedNamber>
           </Experienced>
         </Amount>
       </RigchtContainer>

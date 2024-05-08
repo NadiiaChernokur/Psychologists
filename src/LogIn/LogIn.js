@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -17,6 +17,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../redux/operetion";
 import sprite from "../sprite.svg";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const schema = yup.object().shape({
   email: yup.string().email().required(),
@@ -24,7 +26,6 @@ const schema = yup.object().shape({
 });
 
 const LogIn = () => {
-  const stateError = useSelector((state) => state.error);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -48,14 +49,18 @@ const LogIn = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data) => {
-    dispatch(login(data));
-    console.log(stateError);
-    if (stateError) {
+  const onSubmit = async (data) => {
+    const loginVal = await dispatch(login(data));
+    console.log(loginVal.payload);
+    console.log(loginVal.error?.message);
+    if (loginVal.error?.message === "Rejected") {
+      console.log("kkkkkkkkkkkkk");
+      toast(loginVal.payload);
     } else {
       navigate("/psychologists");
     }
   };
+
   const modalClose = () => {
     navigate("/");
   };
@@ -67,6 +72,7 @@ const LogIn = () => {
   };
   return (
     <LoginModalBackground onClick={handleBackgroundClick}>
+      <ToastContainer toastStyle={{ background: "#fc0317", color: "white" }} />
       <LoginModalContainer>
         <Out onClick={modalClose}>
           <svg width="32" height="32">

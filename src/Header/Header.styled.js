@@ -29,18 +29,28 @@ export const HeaderParagraf = styled.p`
 export const Pages = styled.div`
   display: flex;
   gap: 4vw;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.01em;
+  color: #191a15;
 `;
 export const Buttons = styled.div`
   display: flex;
   gap: 1vw;
   box-sizing: border-box;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.01em;
+  color: #191a15;
 `;
 export const Button = styled.button`
   border-radius: 30px;
   padding: 1.3vh 2vw;
 `;
 export const OutletDiv = styled.div`
-  /* background: rgba(84, 190, 150, 0.2); */
+  background: rgba(84, 190, 150, 0.2);
 `;
 
 export const LogoutButton = styled.button`
