@@ -20,6 +20,7 @@ export const AppointmentModalContainer = styled.div`
   border-radius: 30px;
   width: 599px;
   padding: 64px;
+  position: relative;
 `;
 
 export const AppointmentH2 = styled.h2`
@@ -87,6 +88,9 @@ export const Send = styled.button`
   border-radius: 30px;
   padding: 16px 217px;
   margin-top: 24px;
+  &:hover {
+    background: none;
+  }
 `;
 export const TextArea = styled.textarea`
   border: 1px solid rgba(25, 26, 21, 0.1);

@@ -1,13 +1,12 @@
 import styled from "styled-components";
 export const HeaderContainer = styled.header`
-  background-color: bisque;
-  width: 100vw;
-  height: 10vh;
-  padding: 4vh 10vw;
+  background: rgba(84, 190, 150, 0.2);
+  padding: 34px 128px;
   box-sizing: border-box;
   align-items: center;
   display: flex;
   justify-content: space-between;
+  border-bottom: 1px solid rgba(25, 26, 21, 0.1);
 `;
 export const LogoDiv = styled.div`
   display: flex;
@@ -41,5 +40,37 @@ export const Button = styled.button`
   padding: 1.3vh 2vw;
 `;
 export const OutletDiv = styled.div`
-  background: rgba(84, 190, 150, 0.2);
+  /* background: rgba(84, 190, 150, 0.2); */
+`;
+
+export const LogoutButton = styled.button`
+  border: 1px solid rgba(25, 26, 21, 0.2);
+  border-radius: 30px;
+  padding: 14px 39px;
+  background: none;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.01em;
+  color: #191a15;
+`;
+
+export const LogoutDiv = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.01em;
+  color: #191a15;
+`;
+export const Name = styled.p`
+  margin-left: -12px;
+`;
+
+export const People = styled.svg`
+  padding: 12px;
+  background: #54be96;
+  border-radius: 10px;
 `;

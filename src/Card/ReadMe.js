@@ -11,11 +11,15 @@ import {
   StarDiv,
 } from "./ReadMe.styled";
 import Appointment from "../Appoinment/Appointment";
+import sprite from "../sprite.svg";
 
 const ReadMeButton = ({ array, doctor }) => {
   const [modal, setModal] = useState(false);
   const ShowModal = () => {
     setModal(true);
+  };
+  const CloseModal = () => {
+    setModal(false);
   };
   return (
     <ReadMeContainer>
@@ -29,7 +33,11 @@ const ReadMeButton = ({ array, doctor }) => {
               <div>
                 <p>{el.reviewer}</p>
                 <StarDiv>
-                  <Star></Star>
+                  <Star>
+                    <svg width="16" height="16">
+                      <use href={`${sprite}#star`}></use>
+                    </svg>
+                  </Star>
                   <p>{el.rating}</p>
                 </StarDiv>
               </div>
@@ -41,7 +49,7 @@ const ReadMeButton = ({ array, doctor }) => {
       <MakeAnAppointment onClick={ShowModal}>
         Make an appointment
       </MakeAnAppointment>
-      {modal && <Appointment doctor={doctor} />}
+      {modal && <Appointment doctor={doctor} close={CloseModal} />}
     </ReadMeContainer>
   );
 };

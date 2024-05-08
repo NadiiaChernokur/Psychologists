@@ -24,7 +24,9 @@ export const Letter = styled.div`
   font-size: 20px;
   line-height: 100%;
   color: #54be96;
-  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 export const Star = styled.svg`
   width: 16px;
@@ -33,6 +35,7 @@ export const Star = styled.svg`
 export const StarDiv = styled.div`
   display: flex;
   gap: 8px;
+  align-items: center;
 `;
 export const LiDiv = styled.div`
   display: flex;

@@ -11,7 +11,6 @@ export const List = styled.li`
   gap: 24px;
 `;
 export const UlList = styled.ul`
-  /* background-color: rgba(84, 190, 150, 0.2); */
   display: flex;
   flex-direction: column;
   gap: 32px;

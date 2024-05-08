@@ -5,9 +5,14 @@ import {
   Logo,
   LogoDiv,
   LogoSpan,
+  LogoutButton,
+  LogoutDiv,
+  Name,
   OutletDiv,
   Pages,
+  People,
 } from "./Header.styled";
+import sprite from "../sprite.svg";
 
 const Header = () => {
   return (
@@ -29,6 +34,15 @@ const Header = () => {
           <NavLink to="/login">Log In</NavLink>
           <NavLink to="/registration">Registration</NavLink>
         </Buttons>
+        <LogoutDiv>
+          <People width="16" height="16">
+            <use href={`${sprite}#Vector`}></use>
+          </People>
+          <Name>Name</Name>
+          <LogoutButton>
+            <p>Log out</p>
+          </LogoutButton>
+        </LogoutDiv>
       </HeaderContainer>
       <OutletDiv>
         <Outlet />
