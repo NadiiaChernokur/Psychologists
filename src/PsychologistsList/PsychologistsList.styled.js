@@ -1,10 +1,14 @@
 import styled from "styled-components";
 export const Container = styled.div`
   margin: auto;
-  padding-top: 64px;
-  max-width: 1184px;
+  max-width: 1204px;
+  padding: 64px 20px;
+  height: 110%;
   display: flex;
   flex-direction: column;
+  @media screen and (max-width: 768px) {
+    padding: 32px 20px;
+  }
 `;
 
 export const PsychologistsListSelect = styled.select`

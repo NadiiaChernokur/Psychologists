@@ -12,6 +12,7 @@ import {
   getPsychologistSort,
   updateArray,
 } from "../redux/operetion";
+import { Loader } from "../Loader";
 
 const PsychologistsList = () => {
   const dispatch = useDispatch();

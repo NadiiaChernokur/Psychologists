@@ -2,6 +2,11 @@ import styled from "styled-components";
 
 export const ReadMeContainer = styled.div`
   margin-top: 48px;
+  @media screen and (max-width: 768px) {
+    top: 48px;
+    position: relative;
+    left: -138px;
+  }
 `;
 export const ReadMeUl = styled.ul`
   display: flex;
@@ -46,10 +51,16 @@ export const Response = styled.p`
   font-size: 16px;
   line-height: 125%;
   color: rgba(25, 26, 21, 0.5);
+  @media screen and (max-width: 768px) {
+    font-size: 18px;
+  }
 `;
 export const MakeAnAppointment = styled.button`
   border-radius: 30px;
   padding: 14px 32px;
   width: 227px;
   height: 48px;
+  @media screen and (max-width: 768px) {
+    margin-bottom: 58px;
+  }
 `;

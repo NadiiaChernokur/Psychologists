@@ -60,13 +60,11 @@ const Registration = () => {
   });
   const onSubmit = async (data) => {
     const resultAction = await dispatch(createUser(data));
-    console.log(resultAction);
-    console.log("ooooooooooo");
+
     localStorage.setItem("emailPsych", JSON.stringify(data.email));
-    if (error !== null) {
-      console.log("kkkkkkkkkkkkk");
-      console.log(error);
-      toast(error);
+    if (resultAction.payload === "This address already exists. Log in") {
+      toast("This address already exists. Log in");
+      return;
     } else {
       navigate("/login");
     }

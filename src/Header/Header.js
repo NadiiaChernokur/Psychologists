@@ -1,6 +1,8 @@
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import {
   Buttons,
+  ButtonsParagraf,
+  ButtonsParagrafReg,
   HeaderContainer,
   Logo,
   LogoDiv,
@@ -10,6 +12,7 @@ import {
   Name,
   OutletDiv,
   Pages,
+  PagesParagraf,
   People,
 } from "./Header.styled";
 import sprite from "../sprite.svg";
@@ -42,22 +45,34 @@ const Header = () => {
   return (
     <>
       <HeaderContainer>
-        <LogoDiv>
+        {/* <LogoDiv>
           <NavLink to="/">
             <Logo>
               <LogoSpan>psychologists.</LogoSpan>services
             </Logo>
           </NavLink>
           <Pages>
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/psychologists">Psychologists</NavLink>
-            {isToken && <NavLink to="/favorite"> Favorites</NavLink>}
+            <NavLink to="/">
+              <PagesParagraf>Home</PagesParagraf>
+            </NavLink>
+            <NavLink to="/psychologists">
+              <PagesParagraf> Psychologists</PagesParagraf>
+            </NavLink>
+            {isToken && (
+              <NavLink to="/favorite">
+                <PagesParagraf> Favorites</PagesParagraf>
+              </NavLink>
+            )}
           </Pages>
-        </LogoDiv>
+        </LogoDiv> */}
         {!isToken ? (
           <Buttons>
-            <NavLink to="/login">Log In</NavLink>
-            <NavLink to="/registration">Registration</NavLink>
+            <NavLink to="/login">
+              <ButtonsParagraf>Log In</ButtonsParagraf>
+            </NavLink>
+            <NavLink to="/registration">
+              <ButtonsParagrafReg> Registration</ButtonsParagrafReg>
+            </NavLink>
           </Buttons>
         ) : (
           <LogoutDiv>

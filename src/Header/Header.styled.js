@@ -1,18 +1,22 @@
 import styled from "styled-components";
 export const HeaderContainer = styled.header`
-  background: rgba(84, 190, 150, 0.2);
-  padding: 34px 128px;
-  box-sizing: border-box;
+  /* background: rgba(84, 190, 150, 0.2); */
+  margin: 34px auto;
+  /* box-sizing: border-box; */
+  max-width: 1204px;
   align-items: center;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(25, 26, 21, 0.1);
+  /* border-bottom: 1px solid rgba(25, 26, 21, 0.1); */
+  padding: 0 20px;
 `;
 export const LogoDiv = styled.div`
   display: flex;
   align-items: center;
-  gap: 12vw;
-  box-sizing: border-box;
+  gap: 6vw;
+
+  /* justify-content: space-between;
+  width: 536px; */
 `;
 export const Logo = styled.h1`
   color: #191a15;
@@ -29,6 +33,8 @@ export const HeaderParagraf = styled.p`
 export const Pages = styled.div`
   display: flex;
   gap: 4vw;
+`;
+export const PagesParagraf = styled.p`
   font-weight: 400;
   font-size: 16px;
   line-height: 125%;
@@ -45,12 +51,35 @@ export const Buttons = styled.div`
   letter-spacing: -0.01em;
   color: #191a15;
 `;
+export const ButtonsParagraf = styled.p`
+  border: 1px solid rgba(25, 26, 21, 0.2);
+  border-radius: 30px;
+  padding: 14px 39px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.01em;
+  color: #191a15;
+`;
+export const ButtonsParagrafReg = styled.p`
+  border: 1px solid rgba(25, 26, 21, 0.2);
+  border-radius: 30px;
+  padding: 14px 39px;
+  background: #54be96;
+  color: #fbfbfb;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.01em;
+`;
 export const Button = styled.button`
   border-radius: 30px;
   padding: 1.3vh 2vw;
 `;
 export const OutletDiv = styled.div`
-  background: rgba(84, 190, 150, 0.2);
+  border-top: 1px solid rgba(25, 26, 21, 0.1);
+  /* display: flex;
+  flex-direction: column; */
 `;
 
 export const LogoutButton = styled.button`
