@@ -144,13 +144,7 @@ export const createUser = createAsyncThunk(
       const user = userCredential.user;
       console.log(user);
       const { accessToken, stsTokenManager } = user;
-      // localStorage.setItem(
-      //   "tokenPsych",
-      //   JSON.stringify({
-      //     accessToken: accessToken,
-      //     stsTokenManager: stsTokenManager,
-      //   })
-      // );
+
       const userId = user.uid;
       const userData = {
         name: name,
@@ -238,3 +232,31 @@ export const removeFavoriteItem = (name) => {
     payload: name,
   };
 };
+
+export const getUserToToken = createAsyncThunk(
+  "getUserToToken",
+  async (data, thunkAPI) => {
+    try {
+      const { accessToken } = data;
+      const usersRef = ref(userDatabase, "users");
+      const usersArray = await get(usersRef);
+      const result = usersArray.val();
+      if (result === null) {
+        console.log("errooooooooooooooooor");
+        throw new Error("This service is available only to registered users");
+      }
+
+      const foundUser = Object.values(result).find(
+        (user) => user.accessToken === accessToken
+        // (user) => user.name === accessToken
+      );
+      console.log(foundUser);
+      if (!foundUser) {
+        throw new Error("This service is available only to registered users");
+      }
+      return foundUser;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

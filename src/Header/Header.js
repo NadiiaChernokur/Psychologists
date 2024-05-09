@@ -21,9 +21,9 @@ const Header = () => {
   const [isToken, setIsToken] = useState(false);
   console.log(user);
   useEffect(() => {
-    if (user) {
-      setIsToken(true);
-    }
+    // if (user) {
+    //   setIsToken(true);
+    // }
     const getToken = JSON.parse(localStorage.getItem("tokenPsych"));
     console.log(getToken);
     if (getToken && getToken.length !== 0) {

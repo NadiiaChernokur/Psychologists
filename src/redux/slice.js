@@ -4,6 +4,7 @@ import {
   createUser,
   getPsychologist,
   getPsychologistSort,
+  getUserToToken,
   login,
   removeFavoriteItem,
   updateArray,
@@ -14,6 +15,7 @@ const initialState = {
   user: {},
   psychologistsSort: [],
   favoriteArray: [],
+
   isLoading: false,
   error: null,
 };
@@ -69,6 +71,11 @@ const removeFavoriteArrayFulfilled = (state, action) => {
     (el) => el.name !== action.payload
   );
 };
+const toGetUser = (state, action) => {
+  state.isLoading = false;
+  state.error = null;
+  state.user = action.payload;
+};
 const autoSlice = createSlice({
   name: "psychologists",
   initialState: initialState,
@@ -86,6 +93,9 @@ const autoSlice = createSlice({
       .addCase(getPsychologistSort.pending, handlePending)
       .addCase(getPsychologistSort.fulfilled, psychChoice)
       .addCase(getPsychologistSort.rejected, handleRejected)
+      .addCase(getUserToToken.pending, handlePending)
+      .addCase(getUserToToken.fulfilled, toGetUser)
+      .addCase(getUserToToken.rejected, handleRejected)
       .addCase(updateArray().type, update)
       .addCase(addFavorite.pending, handlePending)
       .addCase(addFavorite.fulfilled, addFavoriteArrayFulfilled)
