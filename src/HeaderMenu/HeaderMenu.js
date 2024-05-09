@@ -19,26 +19,29 @@ import {
   MenuPeg,
 } from "./HeaderMenu.styled";
 
-const HeaderMenu = () => {
+const HeaderMenu = ({ close }) => {
   return (
     <HeaderMenuBackground>
       <HeaderMenuContainer>
         {/* <MenuPages> */}
         <MenuNav>
           <NavLink to="/">
-            <MenuP>Home</MenuP>
+            <MenuP onClick={close}>Home</MenuP>
           </NavLink>
           <NavLink to="/psychologists">
-            <MenuP> Psychologists</MenuP>
+            <MenuP onClick={close}> Psychologists</MenuP>
           </NavLink>
         </MenuNav>
         {/* </MenuPages> */}
         <MenuButtons>
           <NavLink to="/login">
-            <MenuPeg>Log In</MenuPeg>
+            <MenuPeg onClick={close}>Log In</MenuPeg>
           </NavLink>
           <NavLink to="/registration">
-            <ButtonsParagrafReg> Registration</ButtonsParagrafReg>
+            <ButtonsParagrafReg onClick={close}>
+              {" "}
+              Registration
+            </ButtonsParagrafReg>
           </NavLink>
         </MenuButtons>
       </HeaderMenuContainer>

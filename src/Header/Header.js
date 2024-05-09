@@ -46,6 +46,9 @@ const Header = () => {
   const openModal = () => {
     setIsModalOpen(true);
   };
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <>
@@ -59,7 +62,7 @@ const Header = () => {
           <svg width="26" height="26" onClick={openModal}>
             <use href={`${sprite}#Hamburger`}></use>
           </svg>
-          {isModalOpen && <HeaderMenu />}
+          {isModalOpen && <HeaderMenu close={closeModal} />}
           <Pages>
             <NavLink to="/">
               <PagesParagraf>Home</PagesParagraf>
