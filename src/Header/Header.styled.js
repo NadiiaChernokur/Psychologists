@@ -9,6 +9,10 @@ export const HeaderContainer = styled.header`
   justify-content: space-between;
   /* border-bottom: 1px solid rgba(25, 26, 21, 0.1); */
   padding: 0 20px;
+  @media screen and (max-width: 768px) {
+    max-width: 580px;
+    margin: 28px auto;
+  }
 `;
 export const LogoDiv = styled.div`
   display: flex;
@@ -17,6 +21,10 @@ export const LogoDiv = styled.div`
 
   /* justify-content: space-between;
   width: 536px; */
+  @media screen and (max-width: 768px) {
+    justify-content: space-between;
+    width: 100%;
+  }
 `;
 export const Logo = styled.h1`
   color: #191a15;
@@ -33,6 +41,9 @@ export const HeaderParagraf = styled.p`
 export const Pages = styled.div`
   display: flex;
   gap: 4vw;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 export const PagesParagraf = styled.p`
   font-weight: 400;
@@ -50,6 +61,9 @@ export const Buttons = styled.div`
   line-height: 125%;
   letter-spacing: -0.01em;
   color: #191a15;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 export const ButtonsParagraf = styled.p`
   border: 1px solid rgba(25, 26, 21, 0.2);

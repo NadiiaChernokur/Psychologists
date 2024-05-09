@@ -18,10 +18,12 @@ import {
 import sprite from "../sprite.svg";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import HeaderMenu from "../HeaderMenu/HeaderMenu";
 
 const Header = () => {
   const user = useSelector((state) => state.user);
   const [isToken, setIsToken] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
   console.log(user);
   useEffect(() => {
@@ -41,16 +43,23 @@ const Header = () => {
     localStorage.setItem("tokenPsych", JSON.stringify([]));
     navigate("/");
   };
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
 
   return (
     <>
       <HeaderContainer>
-        {/* <LogoDiv>
+        <LogoDiv>
           <NavLink to="/">
             <Logo>
               <LogoSpan>psychologists.</LogoSpan>services
             </Logo>
           </NavLink>
+          <svg width="26" height="26" onClick={openModal}>
+            <use href={`${sprite}#Hamburger`}></use>
+          </svg>
+          {isModalOpen && <HeaderMenu />}
           <Pages>
             <NavLink to="/">
               <PagesParagraf>Home</PagesParagraf>
@@ -64,7 +73,7 @@ const Header = () => {
               </NavLink>
             )}
           </Pages>
-        </LogoDiv> */}
+        </LogoDiv>
         {!isToken ? (
           <Buttons>
             <NavLink to="/login">
