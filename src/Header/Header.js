@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import {
   Buttons,
   HeaderContainer,
@@ -19,6 +19,7 @@ import { useEffect, useState } from "react";
 const Header = () => {
   const user = useSelector((state) => state.user);
   const [isToken, setIsToken] = useState(false);
+  const navigate = useNavigate();
   console.log(user);
   useEffect(() => {
     // if (user) {
@@ -35,6 +36,7 @@ const Header = () => {
   const toLogOut = () => {
     setIsToken(false);
     localStorage.setItem("tokenPsych", JSON.stringify([]));
+    navigate("/");
   };
 
   return (
@@ -52,21 +54,22 @@ const Header = () => {
             {isToken && <NavLink to="/favorite"> Favorites</NavLink>}
           </Pages>
         </LogoDiv>
-        {!isToken && (
+        {!isToken ? (
           <Buttons>
             <NavLink to="/login">Log In</NavLink>
             <NavLink to="/registration">Registration</NavLink>
           </Buttons>
+        ) : (
+          <LogoutDiv>
+            <People width="16" height="16">
+              <use href={`${sprite}#Vector`}></use>
+            </People>
+            <Name>{user.name}</Name>
+            <LogoutButton onClick={toLogOut}>
+              <p>Log out</p>
+            </LogoutButton>
+          </LogoutDiv>
         )}
-        <LogoutDiv>
-          <People width="16" height="16">
-            <use href={`${sprite}#Vector`}></use>
-          </People>
-          <Name>{user.name}</Name>
-          <LogoutButton onClick={toLogOut}>
-            <p>Log out</p>
-          </LogoutButton>
-        </LogoutDiv>
       </HeaderContainer>
       <OutletDiv>
         <Outlet />

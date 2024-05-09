@@ -46,6 +46,15 @@ const Card = ({ array }) => {
   // }, [isError, userExist]);
 
   useEffect(() => {
+    const getToken = JSON.parse(localStorage.getItem("tokenPsych"));
+    console.log(getToken);
+    if (getToken.length === 0) {
+      console.log("888888888");
+      return;
+      // const value = await dispatch(getUserToToken(getToken));
+      // console.log(value.payload);
+    }
+
     const storedFavorites =
       JSON.parse(localStorage.getItem("favoritesPsych")) || [];
     setFavorites(storedFavorites);
@@ -60,7 +69,7 @@ const Card = ({ array }) => {
   const addToFavorite = async (name) => {
     const getToken = JSON.parse(localStorage.getItem("tokenPsych"));
     console.log(getToken);
-    if (getToken && getToken.length !== 0) {
+    if (getToken.length !== 0) {
       console.log("888888888");
       const value = await dispatch(getUserToToken(getToken));
       console.log(value.payload);
@@ -70,6 +79,9 @@ const Card = ({ array }) => {
         toast(value.payload);
         return;
       }
+    } else {
+      toast("This service is available only to registered users");
+      return;
     }
 
     const updatedFavorites = [...favorites];
