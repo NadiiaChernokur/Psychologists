@@ -130,3 +130,10 @@ export const People = styled.svg`
   background: #54be96;
   border-radius: 10px;
 `;
+
+export const OpenModalSvg = styled.svg`
+  display: none;
+  @media screen and (max-width: 768px) {
+    display: block;
+  }
+`;

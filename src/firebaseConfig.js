@@ -6,19 +6,31 @@ import { getAnalytics } from "firebase/analytics";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+import dotenv from "dotenv";
+import { getDatabase } from "firebase/database";
+dotenv.config();
+
+const apiKey = process.env.apiKey;
+const authDomain = process.env.authDomain;
+const databaseURL = process.env.databaseURL;
+const projectId = process.env.projectId;
+const storageBucket = process.env.storageBucket;
+const messagingSenderId = process.env.messagingSenderId;
+const appId = process.env.appId;
+const measurementId = process.env.measurementId;
+
 const firebaseConfig = {
-  apiKey: "AIzaSyDckWQWECL9IMvRADUlAGifTcrRXWFzCyI",
-  authDomain: "psychologists-22f26.firebaseapp.com",
-  databaseURL:
-    "https://psychologists-22f26-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "psychologists-22f26",
-  storageBucket: "psychologists-22f26.appspot.com",
-  messagingSenderId: "931627865163",
-  appId: "1:931627865163:web:8b3ea51aa3d4b3743969ce",
-  measurementId: "G-R9E8GRCFFB",
+  apiKey: apiKey,
+  authDomain: authDomain,
+  databaseURL: databaseURL,
+  projectId: projectId,
+  storageBucket: storageBucket,
+  messagingSenderId: messagingSenderId,
+  appId: appId,
+  measurementId: measurementId,
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const database = getAnalytics(app);
+const app1 = initializeApp(firebaseConfig, "app1");
+const database = getDatabase(app1);
 export default database;

@@ -10,6 +10,7 @@ import {
   LogoutButton,
   LogoutDiv,
   Name,
+  OpenModalSvg,
   OutletDiv,
   Pages,
   PagesParagraf,
@@ -59,9 +60,9 @@ const Header = () => {
               <LogoSpan>psychologists.</LogoSpan>services
             </Logo>
           </NavLink>
-          <svg width="32" height="32" onClick={openModal}>
+          <OpenModalSvg width="32" height="32" onClick={openModal}>
             <use href={`${sprite}#Hamburger`}></use>
-          </svg>
+          </OpenModalSvg>
           {isModalOpen && <HeaderMenu close={closeModal} />}
           <Pages>
             <NavLink to="/">
