@@ -8,10 +8,13 @@ export const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   /* border-bottom: 1px solid rgba(25, 26, 21, 0.1); */
-  padding: 0 20px;
+  padding: 0 24px;
   @media screen and (max-width: 768px) {
-    max-width: 580px;
-    margin: 28px auto;
+    /* max-width: 580px; */
+    min-width: 614px;
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(25, 26, 21, 0.1);
+    padding-bottom: 36px;
   }
 `;
 export const LogoDiv = styled.div`
@@ -91,7 +94,7 @@ export const Button = styled.button`
   padding: 1.3vh 2vw;
 `;
 export const OutletDiv = styled.div`
-  border-top: 1px solid rgba(25, 26, 21, 0.1);
+  /* border-top: 1px solid rgba(25, 26, 21, 0.1); */
   /* display: flex;
   flex-direction: column; */
 `;

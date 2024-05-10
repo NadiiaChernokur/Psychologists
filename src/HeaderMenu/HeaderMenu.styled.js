@@ -66,3 +66,11 @@ export const MenuPeg = styled.p`
   line-height: 125%;
   letter-spacing: -0.01em;
 `;
+export const MenuOut = styled.button`
+  position: absolute;
+  right: 29px;
+  top: 26px;
+  background: none;
+  padding: 0;
+  stroke: #d9fcf3;
+`;

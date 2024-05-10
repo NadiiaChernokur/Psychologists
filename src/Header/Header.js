@@ -59,7 +59,7 @@ const Header = () => {
               <LogoSpan>psychologists.</LogoSpan>services
             </Logo>
           </NavLink>
-          <svg width="26" height="26" onClick={openModal}>
+          <svg width="32" height="32" onClick={openModal}>
             <use href={`${sprite}#Hamburger`}></use>
           </svg>
           {isModalOpen && <HeaderMenu close={closeModal} />}

@@ -9,6 +9,12 @@ export const MainPageContainer = styled.main`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    min-width: 672px;
+    height: 100%;
+    gap: 82px;
+  }
 `;
 export const LeftContainer = styled.div`
   width: 50%;
@@ -16,11 +22,22 @@ export const LeftContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  @media screen and (max-width: 768px) {
+    order: 2;
+    gap: 44px;
+    width: 100%;
+    align-items: center;
+  }
 `;
 export const RigchtContainer = styled.div`
   width: 40%;
   height: 110%;
   position: relative;
+  @media screen and (max-width: 768px) {
+    order: 1;
+    width: 324px;
+    height: 369px;
+  }
 `;
 export const Text = styled.h2`
   font-size: clamp(30px, 5vw, 80px);
@@ -38,6 +55,9 @@ export const Text2 = styled.p`
   letter-spacing: -0.02em;
   color: #191a15;
   width: 80%;
+  @media screen and (max-width: 768px) {
+    font-size: 22px;
+  }
 `;
 export const MainButton = styled.button`
   border-radius: 30px;
@@ -45,6 +65,12 @@ export const MainButton = styled.button`
   padding: 18px 50px;
   display: flex;
   gap: 18px;
+  align-items: center;
+  font-size: 20px;
+
+  @media screen and (max-width: 768px) {
+    justify-content: space-between;
+  }
 `;
 export const Img = styled.div`
   background-image: url(${foto});
@@ -67,6 +93,10 @@ export const Blue = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media screen and (max-width: 768px) {
+    width: 8.5vw;
+    height: 8.5vw;
+  }
 `;
 
 export const Question = styled.svg`
@@ -81,7 +111,12 @@ export const Orange = styled.div`
   top: 15%;
   right: -6%;
   rotate: 108deg;
+  @media screen and (max-width: 768px) {
+    width: 8.5vw;
+    height: 8.5vw;
+  }
 `;
+
 export const Amount = styled.div`
   background-color: #54be96;
   box-sizing: border-box;
@@ -96,6 +131,10 @@ export const Amount = styled.div`
   display: flex;
   align-items: center;
   gap: 16px;
+  @media screen and (max-width: 768px) {
+    top: 84%;
+    left: -31%;
+  }
 `;
 export const Chek = styled.div`
   background-color: #fbfbfb;
