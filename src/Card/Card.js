@@ -23,7 +23,7 @@ import {
 } from "./Card.styled";
 import ReadMeButton from "./ReadMe";
 import sprite from "../sprite.svg";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   addFavorite,
   getUserToToken,
@@ -49,7 +49,6 @@ const Card = ({ array }) => {
     const getToken = JSON.parse(localStorage.getItem("tokenPsych"));
     console.log(getToken);
     if (getToken.length === 0) {
-      console.log("888888888");
       return;
       // const value = await dispatch(getUserToToken(getToken));
       // console.log(value.payload);
@@ -70,7 +69,6 @@ const Card = ({ array }) => {
     const getToken = JSON.parse(localStorage.getItem("tokenPsych"));
     console.log(getToken);
     if (getToken.length !== 0) {
-      console.log("888888888");
       const value = await dispatch(getUserToToken(getToken));
       console.log(value.payload);
       if (
@@ -86,7 +84,7 @@ const Card = ({ array }) => {
 
     const updatedFavorites = [...favorites];
     const index = updatedFavorites.indexOf(name);
-    console.log("dddddddddd");
+
     if (index !== -1) {
       updatedFavorites.splice(index, 1);
       dispatch(removeFavoriteItem(name));

@@ -25,7 +25,6 @@ const handlePending = (state) => {
 };
 
 const handleRejected = (state, action) => {
-  console.log(action.payload);
   state.isLoading = false;
   state.error = action.payload;
 };
@@ -36,14 +35,12 @@ const handleGetPsychologist = (state, action) => {
 };
 
 const userCreate = (state, action) => {
-  console.log(action.payload);
   state.isLoading = false;
   state.error = null;
   state.user = action.payload;
 };
 
 const userLogin = (state, action) => {
-  console.log(action.payload);
   state.isLoading = false;
   state.error = null;
   state.user = action.payload;

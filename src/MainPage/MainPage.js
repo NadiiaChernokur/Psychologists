@@ -18,11 +18,11 @@ import {
   TextSpan,
 } from "./MainPage.styled";
 import sprite from "../sprite.svg";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 const MainPage = () => {
   const navigate = useNavigate();
-  const user = useSelector((state) => state.user);
+  // const user = useSelector((state) => state.user);
   const toShowPsychologists = () => {
     navigate("/psychologists");
   };

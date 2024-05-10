@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -13,7 +13,7 @@ import {
   LoginParagraf,
   Out,
 } from "./LogIn.styled";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { login } from "../redux/operetion";
 import sprite from "../sprite.svg";
 import { useNavigate } from "react-router-dom";
@@ -51,10 +51,8 @@ const LogIn = () => {
 
   const onSubmit = async (data) => {
     const loginVal = await dispatch(login(data));
-    console.log(loginVal.payload);
-    console.log(loginVal.error?.message);
+
     if (loginVal.error?.message === "Rejected") {
-      console.log("kkkkkkkkkkkkk");
       toast(loginVal.payload);
     } else {
       navigate("/psychologists");

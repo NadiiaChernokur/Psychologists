@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addFavorite, removeFavoriteItem } from "../redux/operetion";
+import { removeFavoriteItem } from "../redux/operetion";
 import sprite from "../sprite.svg";
 import ReadMeButton from "../Card/ReadMe";
 import {

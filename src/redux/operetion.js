@@ -43,18 +43,6 @@ export const getPsychologist = createAsyncThunk(
   "psychologists",
   async (page, thunkAPI) => {
     try {
-      // const psychRef = ref(database, "/");
-      // onValue(psychRef, (snapshot) => {
-      //   const psychData = snapshot.val();
-      //   console.log(psychData);
-      //   const ratings = [];
-      //   for (const key in psychData) {
-      //     if (Object.hasOwnProperty.call(psychData, key)) {
-      //       ratings.push(psychData[key].rating);
-      //     }
-      //   }
-      //   console.log(ratings);
-      // });
       const psychRef = ref(database, "/");
       const psycRef = query(psychRef, orderByKey(), limitToFirst(page));
 
@@ -71,13 +59,11 @@ export const getPsychologist = createAsyncThunk(
 export const getPsychologistSort = createAsyncThunk(
   "psychsort",
   async (data, thunkAPI) => {
-    console.log(data);
     try {
       const psychRef = await get(ref(database));
       const res = psychRef.val();
-      console.log(res);
+
       const resCopy = Array.from(res);
-      console.log(resCopy);
 
       switch (data) {
         case "A to Z":
@@ -137,13 +123,12 @@ export const createUser = createAsyncThunk(
       const usersRef = ref(userDatabase, "users");
       const usersArray = await get(usersRef);
       const result = usersArray.val();
-      console.log(result);
+
       // if (result === null) {
       //   console.log("77777777");
       // }
       Object.values(result).forEach((usemail) => {
         if (email === usemail.email) {
-          console.log("77777777");
           throw new Error("This address already exists. Log in");
         }
       });
@@ -154,7 +139,7 @@ export const createUser = createAsyncThunk(
       );
 
       const user = userCredential.user;
-      console.log(user);
+
       const { accessToken, stsTokenManager } = user;
 
       const userId = user.uid;
@@ -170,7 +155,6 @@ export const createUser = createAsyncThunk(
 
       return { userId, ...userData };
     } catch (error) {
-      console.log(error);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -182,16 +166,15 @@ export const login = createAsyncThunk("login", async (data, thunkAPI) => {
     const usersRef = ref(userDatabase, "users");
     const usersArray = await get(usersRef);
     const result = usersArray.val();
-    console.log(result);
+
     if (result === null) {
-      console.log("errooooooooooooooooor");
       throw new Error("This e-mail address is not registered");
     }
 
     const foundUser = Object.values(result).find(
       (user) => user.email === email
     );
-    console.log(foundUser);
+
     if (!foundUser) {
       throw new Error("This e-mail address is not registered");
     }
@@ -230,7 +213,6 @@ export const addFavorite = createAsyncThunk(
 
       const selected = snapshot.val().find((el) => el.name === name);
 
-      console.log(selected);
       return selected;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -254,7 +236,6 @@ export const getUserToToken = createAsyncThunk(
       const usersArray = await get(usersRef);
       const result = usersArray.val();
       if (result === null) {
-        console.log("errooooooooooooooooor");
         throw new Error("This service is available only to registered users");
       }
 
@@ -262,7 +243,7 @@ export const getUserToToken = createAsyncThunk(
         (user) => user.accessToken === accessToken
         // (user) => user.name === accessToken
       );
-      console.log(foundUser);
+
       if (!foundUser) {
         throw new Error("This service is available only to registered users");
       }

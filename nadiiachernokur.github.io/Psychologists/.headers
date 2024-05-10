@@ -1,0 +1,11 @@
+[
+  {
+    "applyTo": "psychologists",
+    "headers": [
+      {
+        "name": "content-type",
+        "value": "application/json; charset=utf-8"
+      }
+    ]
+  }
+]

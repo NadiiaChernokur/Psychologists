@@ -1,14 +1,5 @@
 import { NavLink } from "react-router-dom";
-import {
-  Buttons,
-  ButtonsParagraf,
-  ButtonsParagrafReg,
-  Logo,
-  LogoDiv,
-  LogoSpan,
-  Pages,
-  PagesParagraf,
-} from "../Header/Header.styled";
+import { ButtonsParagrafReg } from "../Header/Header.styled";
 import {
   HeaderMenuBackground,
   HeaderMenuContainer,

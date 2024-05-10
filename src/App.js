@@ -31,18 +31,5 @@ const App = () => {
     </>
   );
 };
-// function App() {
-//   return (
-//     <AppContainer>
-//       {/* {<Header />}
-//       {<MainPage />} */}
-//       {/* {<LogIn />} */}
-//       {/* {<Registration />} */}
-//       {/* {<Card />} */}
-//       {/* {<Appointment />} */}
-//       {<PsychologistsList />}
-//     </AppContainer>
-//   );
-// }
 
 export default App;
