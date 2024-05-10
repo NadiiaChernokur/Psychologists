@@ -12,7 +12,7 @@ const { DB_HOST } = process.env;
 mongoose
   .connect(DB_HOST)
   .then(() => {
-    app.listen(5000);
+    app.listen("https://nadiiachernokur.github.io/Psychologists/");
     console.log("Database connection successful");
   })
   .catch((error) => {
