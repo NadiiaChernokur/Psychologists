@@ -39,7 +39,7 @@ const LogIn = () => {
     return () => {
       document.removeEventListener("keydown", handleEscapeKey);
     };
-  }, []);
+  }, [navigate]);
 
   const {
     register,

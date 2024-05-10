@@ -28,7 +28,8 @@ const Appointment = ({ doctor, close }) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    // eslint-disable-next-line no-empty-pattern
+    formState: {},
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -42,11 +43,9 @@ const Appointment = ({ doctor, close }) => {
     return () => {
       document.removeEventListener("keydown", handleEscapeKey);
     };
-  }, []);
+  }, [close]);
 
   const onSubmit = (data) => {
-    console.log(data);
-    console.log("6666666666");
     close();
   };
   const modalClose = () => {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -12,7 +12,7 @@ import {
   RegistrationParagraf,
 } from "./Registration.styled";
 import { createUser } from "../redux/operetion";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Out } from "../LogIn/LogIn.styled";
 import sprite from "../sprite.svg";
@@ -27,16 +27,16 @@ const schema = yup.object().shape({
 });
 
 const Registration = () => {
-  const stateError = useSelector((state) => state.error);
-  const [error, setError] = useState(null);
+  // const stateError = useSelector((state) => state.error);
+  // const [error, setError] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log(stateError);
-  useEffect(() => {
-    if (stateError !== null) {
-      setError(stateError);
-    }
-  }, [stateError]);
+
+  // useEffect(() => {
+  //   if (stateError !== null) {
+  //     setError(stateError);
+  //   }
+  // }, [stateError]);
 
   useEffect(() => {
     const handleEscapeKey = (e) => {
@@ -48,7 +48,7 @@ const Registration = () => {
     return () => {
       document.removeEventListener("keydown", handleEscapeKey);
     };
-  }, []);
+  }, [navigate]);
   const {
     register,
     handleSubmit,
