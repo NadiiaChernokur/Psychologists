@@ -10,11 +10,14 @@ import {
   LogoutButton,
   LogoutDiv,
   Name,
+  NameMenu,
+  Namediv,
   OpenModalSvg,
   OutletDiv,
   Pages,
   PagesParagraf,
   People,
+  PeopleMenu,
 } from './Header.styled';
 import sprite from '../sprite.svg';
 import { useSelector } from 'react-redux';
@@ -26,19 +29,19 @@ const Header = () => {
   const [isToken, setIsToken] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
-  console.log(user);
+
   useEffect(() => {
     // if (user) {
     //   setIsToken(true);
     // }
     const getToken = JSON.parse(localStorage.getItem('tokenPsych'));
-    console.log(getToken);
+    // console.log(getToken);
     if (getToken && getToken.length !== 0) {
-      console.log('9999999999');
+      // console.log('9999999999');
       setIsToken(true);
     }
-    console.log(getToken);
-  }, [user]);
+    // console.log(getToken);
+  }, []);
   const toLogOut = () => {
     setIsToken(false);
     localStorage.setItem('tokenPsych', JSON.stringify([]));
@@ -60,10 +63,26 @@ const Header = () => {
               <LogoSpan>psychologists.</LogoSpan>services
             </Logo>
           </NavLink>
+          {isToken && (
+            <Namediv>
+              <PeopleMenu width="16" height="16">
+                <use href={`${sprite}#Vector`}></use>
+              </PeopleMenu>
+              <NameMenu>{user.name}</NameMenu>
+            </Namediv>
+          )}
+
           <OpenModalSvg width="32" height="32" onClick={openModal}>
             <use href={`${sprite}#Hamburger`}></use>
           </OpenModalSvg>
-          {isModalOpen && <HeaderMenu close={closeModal} />}
+
+          {isModalOpen && (
+            <HeaderMenu
+              close={closeModal}
+              isLogin={isToken}
+              toLogOut={toLogOut}
+            />
+          )}
           <Pages>
             <NavLink to="/">
               <PagesParagraf>Home</PagesParagraf>

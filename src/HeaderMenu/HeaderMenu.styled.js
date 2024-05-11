@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const HeaderMenuBackground = styled.div`
   position: fixed;
@@ -42,7 +42,6 @@ export const MenuButtons = styled.div`
   line-height: 125%;
   letter-spacing: -0.01em;
   /* color: #191a15; */
-
   gap: 8px;
 `;
 export const MenuNav = styled.div`
@@ -50,7 +49,8 @@ export const MenuNav = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 64px;
+  /* height: 64px; */
+  gap: 20px;
 `;
 export const MenuP = styled.p`
   color: #d9fcf3;

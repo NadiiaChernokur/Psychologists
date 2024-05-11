@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import foto from "../../src/imagemain.jpg";
+import styled from 'styled-components';
+import foto from '../../src/imagemain.jpg';
 export const MainPageContainer = styled.main`
   background: linear-gradient(to right, #ebfcf8, rgba(84, 190, 150, 0.2));
   width: 100vw;
@@ -102,6 +102,9 @@ export const Blue = styled.div`
 export const Question = styled.svg`
   rotate: -66deg;
 `;
+export const Users = styled.svg`
+  rotate: -106deg;
+`;
 export const Orange = styled.div`
   background-color: #fbc75e;
   width: 2.5vw;
@@ -111,6 +114,9 @@ export const Orange = styled.div`
   top: 15%;
   right: -6%;
   rotate: 108deg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   @media screen and (max-width: 768px) {
     width: 8.5vw;
     height: 8.5vw;

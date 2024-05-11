@@ -1,16 +1,14 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 export const HeaderContainer = styled.header`
-  /* background: rgba(84, 190, 150, 0.2); */
   margin: 34px auto;
-  /* box-sizing: border-box; */
+
   max-width: 1204px;
   align-items: center;
   display: flex;
   justify-content: space-between;
-  /* border-bottom: 1px solid rgba(25, 26, 21, 0.1); */
+
   padding: 0 24px;
   @media screen and (max-width: 768px) {
-    /* max-width: 580px; */
     min-width: 614px;
     margin-bottom: 0;
     border-bottom: 1px solid rgba(25, 26, 21, 0.1);
@@ -21,9 +19,8 @@ export const LogoDiv = styled.div`
   display: flex;
   align-items: center;
   gap: 6vw;
+  margin-right: 18px;
 
-  /* justify-content: space-between;
-  width: 536px; */
   @media screen and (max-width: 768px) {
     justify-content: space-between;
     width: 100%;
@@ -54,6 +51,9 @@ export const PagesParagraf = styled.p`
   line-height: 125%;
   letter-spacing: -0.01em;
   color: #191a15;
+  @media screen and (max-width: 768px) {
+    color: #d9fcf3;
+  }
 `;
 export const Buttons = styled.div`
   display: flex;
@@ -109,6 +109,11 @@ export const LogoutButton = styled.button`
   line-height: 125%;
   letter-spacing: -0.01em;
   color: #191a15;
+  white-space: nowrap;
+  @media screen and (max-width: 768px) {
+    /* color: #d9fcf3; */
+    background: #54be96;
+  }
 `;
 
 export const LogoutDiv = styled.div`
@@ -120,9 +125,37 @@ export const LogoutDiv = styled.div`
   line-height: 125%;
   letter-spacing: -0.01em;
   color: #191a15;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 export const Name = styled.p`
   margin-left: -12px;
+`;
+
+export const PeopleMenu = styled.svg`
+  padding: 12px;
+  background: #54be96;
+  border-radius: 10px;
+  display: none;
+  @media screen and (max-width: 768px) {
+    display: block;
+  }
+`;
+export const NameMenu = styled.p`
+  margin-left: -12px;
+  display: none;
+  @media screen and (max-width: 768px) {
+    display: block;
+  }
+`;
+export const Namediv = styled.div`
+  display: none;
+  @media screen and (max-width: 768px) {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+  }
 `;
 
 export const People = styled.svg`

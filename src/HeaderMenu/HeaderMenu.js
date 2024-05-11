@@ -1,5 +1,9 @@
-import { NavLink } from "react-router-dom";
-import { ButtonsParagrafReg } from "../Header/Header.styled";
+import { NavLink } from 'react-router-dom';
+import {
+  ButtonsParagrafReg,
+  LogoutButton,
+  PagesParagraf,
+} from '../Header/Header.styled';
 import {
   HeaderMenuBackground,
   HeaderMenuContainer,
@@ -8,11 +12,19 @@ import {
   MenuOut,
   MenuP,
   MenuPeg,
-} from "./HeaderMenu.styled";
-import sprite from "../sprite.svg";
+} from './HeaderMenu.styled';
+import sprite from '../sprite.svg';
+import { useEffect, useState } from 'react';
 
-const HeaderMenu = ({ close }) => {
-  const handleBackgroundClick = (event) => {
+const HeaderMenu = ({ close, isLogin, toLogOut }) => {
+  console.log(isLogin);
+  const [login, setLogin] = useState(false);
+  useEffect(() => {
+    if (isLogin) {
+      setLogin(true);
+    }
+  }, [isLogin]);
+  const handleBackgroundClick = event => {
     if (event.target === event.currentTarget) {
       close();
     }
@@ -32,18 +44,28 @@ const HeaderMenu = ({ close }) => {
           <NavLink to="/psychologists">
             <MenuP onClick={close}> Psychologists</MenuP>
           </NavLink>
+          {login && (
+            <NavLink to="/favorite">
+              <PagesParagraf> Favorites</PagesParagraf>
+            </NavLink>
+          )}
         </MenuNav>
-
-        <MenuButtons>
-          <NavLink to="/login">
-            <MenuPeg onClick={close}>Log In</MenuPeg>
-          </NavLink>
-          <NavLink to="/registration">
-            <ButtonsParagrafReg onClick={close}>
-              Registration
-            </ButtonsParagrafReg>
-          </NavLink>
-        </MenuButtons>
+        {!login ? (
+          <MenuButtons>
+            <NavLink to="/login">
+              <MenuPeg onClick={close}>Log In</MenuPeg>
+            </NavLink>
+            <NavLink to="/registration">
+              <ButtonsParagrafReg onClick={close}>
+                Registration
+              </ButtonsParagrafReg>
+            </NavLink>
+          </MenuButtons>
+        ) : (
+          <LogoutButton onClick={toLogOut}>
+            <p>Log out</p>
+          </LogoutButton>
+        )}
       </HeaderMenuContainer>
     </HeaderMenuBackground>
   );

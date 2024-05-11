@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import {
   Amount,
   Blue,
@@ -16,15 +16,16 @@ import {
   Text,
   Text2,
   TextSpan,
-} from "./MainPage.styled";
-import sprite from "../sprite.svg";
+  Users,
+} from './MainPage.styled';
+import sprite from '../sprite.svg';
 // import { useSelector } from "react-redux";
 
 const MainPage = () => {
   const navigate = useNavigate();
   // const user = useSelector((state) => state.user);
   const toShowPsychologists = () => {
-    navigate("/psychologists");
+    navigate('/psychologists');
   };
   return (
     <MainPageContainer>
@@ -50,7 +51,11 @@ const MainPage = () => {
             <use href={`${sprite}#question`}></use>
           </Question>
         </Blue>
-        <Orange></Orange>
+        <Orange>
+          <Users width="25" height="25">
+            <use href={`${sprite}#mdi_users`}></use>
+          </Users>
+        </Orange>
         <Amount>
           <Chek>
             <svg width="30" height="30">
