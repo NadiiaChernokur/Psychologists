@@ -68,7 +68,7 @@ const Card = ({ array }) => {
   const addToFavorite = async name => {
     const getToken = JSON.parse(localStorage.getItem('tokenPsych'));
     console.log(getToken);
-    if (getToken.length !== 0) {
+    if (getToken && getToken.length !== 0) {
       const value = await dispatch(getUserToToken(getToken));
       console.log(value.payload);
       if (
