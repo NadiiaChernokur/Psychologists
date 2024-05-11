@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 import {
   About,
   CardImg,
@@ -20,17 +20,17 @@ import {
   RatingP,
   ReadMe,
   UlList,
-} from "./Card.styled";
-import ReadMeButton from "./ReadMe";
-import sprite from "../sprite.svg";
-import { useDispatch } from "react-redux";
+} from './Card.styled';
+import ReadMeButton from './ReadMe';
+import sprite from '../sprite.svg';
+import { useDispatch } from 'react-redux';
 import {
   addFavorite,
   getUserToToken,
   removeFavoriteItem,
-} from "../redux/operetion";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+} from '../redux/operetion';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Card = ({ array }) => {
   const dispatch = useDispatch();
@@ -46,39 +46,39 @@ const Card = ({ array }) => {
   // }, [isError, userExist]);
 
   useEffect(() => {
-    const getToken = JSON.parse(localStorage.getItem("tokenPsych"));
+    const getToken = JSON.parse(localStorage.getItem('tokenPsych'));
     console.log(getToken);
-    if (getToken.length === 0) {
+    if (getToken === null || getToken.length === 0) {
       return;
       // const value = await dispatch(getUserToToken(getToken));
       // console.log(value.payload);
     }
 
     const storedFavorites =
-      JSON.parse(localStorage.getItem("favoritesPsych")) || [];
+      JSON.parse(localStorage.getItem('favoritesPsych')) || [];
     setFavorites(storedFavorites);
   }, []);
 
-  const handleClick = (index) => {
-    setClicks((prevClicks) => ({
+  const handleClick = index => {
+    setClicks(prevClicks => ({
       ...prevClicks,
       [index]: !prevClicks[index],
     }));
   };
-  const addToFavorite = async (name) => {
-    const getToken = JSON.parse(localStorage.getItem("tokenPsych"));
+  const addToFavorite = async name => {
+    const getToken = JSON.parse(localStorage.getItem('tokenPsych'));
     console.log(getToken);
     if (getToken.length !== 0) {
       const value = await dispatch(getUserToToken(getToken));
       console.log(value.payload);
       if (
-        value.payload === "This service is available only to registered users"
+        value.payload === 'This service is available only to registered users'
       ) {
         toast(value.payload);
         return;
       }
     } else {
-      toast("This service is available only to registered users");
+      toast('This service is available only to registered users');
       return;
     }
 
@@ -93,14 +93,14 @@ const Card = ({ array }) => {
       dispatch(addFavorite(name));
     }
     setFavorites(updatedFavorites);
-    localStorage.setItem("favoritesPsych", JSON.stringify(updatedFavorites));
+    localStorage.setItem('favoritesPsych', JSON.stringify(updatedFavorites));
   };
-  const isFavorite = (PName) => {
+  const isFavorite = PName => {
     return favorites.includes(PName);
   };
   return (
     <>
-      <ToastContainer toastStyle={{ background: "#fc0317", color: "white" }} />
+      <ToastContainer toastStyle={{ background: '#fc0317', color: 'white' }} />
 
       <UlList>
         {array.map((el, index) => (

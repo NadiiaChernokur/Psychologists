@@ -1,4 +1,4 @@
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import {
   Buttons,
   ButtonsParagraf,
@@ -15,14 +15,14 @@ import {
   Pages,
   PagesParagraf,
   People,
-} from "./Header.styled";
-import sprite from "../sprite.svg";
-import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-import HeaderMenu from "../HeaderMenu/HeaderMenu";
+} from './Header.styled';
+import sprite from '../sprite.svg';
+import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import HeaderMenu from '../HeaderMenu/HeaderMenu';
 
 const Header = () => {
-  const user = useSelector((state) => state.user);
+  const user = useSelector(state => state.user);
   const [isToken, setIsToken] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
@@ -31,18 +31,18 @@ const Header = () => {
     // if (user) {
     //   setIsToken(true);
     // }
-    const getToken = JSON.parse(localStorage.getItem("tokenPsych"));
+    const getToken = JSON.parse(localStorage.getItem('tokenPsych'));
     console.log(getToken);
     if (getToken && getToken.length !== 0) {
-      console.log("9999999999");
+      console.log('9999999999');
       setIsToken(true);
     }
     console.log(getToken);
   }, [user]);
   const toLogOut = () => {
     setIsToken(false);
-    localStorage.setItem("tokenPsych", JSON.stringify([]));
-    navigate("/");
+    localStorage.setItem('tokenPsych', JSON.stringify([]));
+    navigate('/');
   };
   const openModal = () => {
     setIsModalOpen(true);
