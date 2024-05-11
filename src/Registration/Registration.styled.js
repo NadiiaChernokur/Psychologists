@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const RegistrationModalBackground = styled.div`
   position: fixed;
@@ -55,4 +55,14 @@ export const RegistrationButton = styled.button`
   border-radius: 30px;
   padding: 16px 189px;
   margin-top: 20px;
+`;
+
+export const PasswordDiv = styled.div`
+  position: relative;
+`;
+
+export const PasswordSvg = styled.svg`
+  position: absolute;
+  top: 16px;
+  right: 0;
 `;

@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
-import { useForm } from "react-hook-form";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
+import React, { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 import {
+  PasswordDiv,
+  PasswordSvg,
   RegistrationButton,
   RegistrationForm,
   RegistrationInput,
@@ -10,15 +12,15 @@ import {
   RegistrationModalBackground,
   RegistrationModalContainer,
   RegistrationParagraf,
-} from "./Registration.styled";
-import { createUser } from "../redux/operetion";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { Out } from "../LogIn/LogIn.styled";
-import sprite from "../sprite.svg";
+} from './Registration.styled';
+import { createUser } from '../redux/operetion';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { Out } from '../LogIn/LogIn.styled';
+import sprite from '../sprite.svg';
 
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const schema = yup.object().shape({
   name: yup.string().required(),
@@ -29,6 +31,8 @@ const schema = yup.object().shape({
 const Registration = () => {
   // const stateError = useSelector((state) => state.error);
   // const [error, setError] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
+  const [password, setPassword] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -39,14 +43,14 @@ const Registration = () => {
   // }, [stateError]);
 
   useEffect(() => {
-    const handleEscapeKey = (e) => {
-      if (e.key === "Escape") {
-        navigate("/");
+    const handleEscapeKey = e => {
+      if (e.key === 'Escape') {
+        navigate('/');
       }
     };
-    document.addEventListener("keydown", handleEscapeKey);
+    document.addEventListener('keydown', handleEscapeKey);
     return () => {
-      document.removeEventListener("keydown", handleEscapeKey);
+      document.removeEventListener('keydown', handleEscapeKey);
     };
   }, [navigate]);
   const {
@@ -56,30 +60,37 @@ const Registration = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const onSubmit = async (data) => {
+  const onSubmit = async data => {
     const resultAction = await dispatch(createUser(data));
 
-    localStorage.setItem("emailPsych", JSON.stringify(data.email));
-    if (resultAction.payload === "This address already exists. Log in") {
-      toast("This address already exists. Log in");
+    localStorage.setItem('emailPsych', JSON.stringify(data.email));
+    if (resultAction.payload === 'This address already exists. Log in') {
+      toast('This address already exists. Log in');
       return;
     } else {
-      navigate("/login");
+      navigate('/login');
     }
   };
 
   const modalClose = () => {
-    navigate("/");
+    navigate('/');
   };
 
-  const handleBackgroundClick = (event) => {
+  const handleBackgroundClick = event => {
     if (event.target === event.currentTarget) {
-      navigate("/");
+      navigate('/');
     }
+  };
+  const handleChange = e => {
+    setPassword(e.target.value);
+  };
+
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
   };
   return (
     <RegistrationModalBackground onClick={handleBackgroundClick}>
-      <ToastContainer toastStyle={{ background: "#fc0317", color: "white" }} />
+      <ToastContainer toastStyle={{ background: '#fc0317', color: 'white' }} />
       <RegistrationModalContainer>
         <Out onClick={modalClose}>
           <svg width="32" height="32">
@@ -97,35 +108,46 @@ const Registration = () => {
           <div>
             <RegistrationInput
               type="name"
-              {...register("name")}
+              {...register('name')}
               placeholder="Name"
             />
             {errors.name && (
-              <span style={{ color: "#f71b2e" }}>{errors.name.message}</span>
+              <span style={{ color: '#f71b2e' }}>{errors.name.message}</span>
             )}
           </div>
           <div>
             <RegistrationInput
               type="email"
-              {...register("email")}
+              {...register('email')}
               placeholder="Email"
             />
             {errors.email && (
-              <span style={{ color: "#f71b2e" }}>{errors.email.message}</span>
+              <span style={{ color: '#f71b2e' }}>{errors.email.message}</span>
             )}
           </div>
-          <div>
+          <PasswordDiv>
             <RegistrationInput
-              type="password"
-              {...register("password")}
+              type={showPassword ? 'text' : 'password'}
+              {...register('password')}
               placeholder="Password"
+              value={password}
+              onChange={handleChange}
             />
             {errors.password && (
-              <span style={{ color: "#f71b2e" }}>
+              <span style={{ color: '#f71b2e' }}>
                 {errors.password.message}
               </span>
             )}
-          </div>
+            {showPassword ? (
+              <PasswordSvg width="20" height="20" onClick={toggleShowPassword}>
+                <use href={`${sprite}#eye`}></use>
+              </PasswordSvg>
+            ) : (
+              <PasswordSvg width="20" height="20" onClick={toggleShowPassword}>
+                <use href={`${sprite}#eye-off`}></use>
+              </PasswordSvg>
+            )}
+          </PasswordDiv>
           <RegistrationButton type="submit">Sign Up</RegistrationButton>
         </RegistrationForm>
       </RegistrationModalContainer>

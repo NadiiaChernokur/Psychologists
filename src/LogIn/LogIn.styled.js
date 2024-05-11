@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const LoginModalBackground = styled.div`
   position: fixed;
@@ -52,6 +52,16 @@ export const LoginInput = styled.input`
   border: 1px solid rgba(25, 26, 21, 0.1);
   border-radius: 12px;
   padding: 16px 18px;
+`;
+export const LoginInputPass = styled.input`
+  border: 1px solid rgba(25, 26, 21, 0.1);
+  border-radius: 12px;
+  padding: 16px 18px;
+  width: 398px;
+`;
+export const LoginFieldPassword = styled.div`
+  position: relative;
+  width: 414px;
 `;
 export const LoginButton = styled.button`
   border-radius: 30px;
