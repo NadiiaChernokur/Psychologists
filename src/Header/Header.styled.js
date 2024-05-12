@@ -188,21 +188,8 @@ export const Indicator = styled.div`
   height: 10px;
   background-color: green;
   border-radius: 50%;
-  /* position: absolute; */
   top: 20px;
   left: 20px;
-  @media screen and (max-width: 768px) {
-    /* display: block; */
-  }
-`;
-export const IndicatorPsych = styled.div`
-  width: 10px;
-  height: 10px;
-  background-color: green;
-  border-radius: 50%;
-  position: absolute;
-  top: 20px;
-  left: 50px;
   @media screen and (max-width: 768px) {
     /* display: block; */
   }

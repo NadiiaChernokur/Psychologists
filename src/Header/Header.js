@@ -5,7 +5,6 @@ import {
   ButtonsParagrafReg,
   HeaderContainer,
   Indicator,
-  IndicatorPsych,
   Logo,
   LogoDiv,
   LogoSpan,
