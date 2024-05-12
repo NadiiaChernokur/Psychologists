@@ -11,17 +11,9 @@ import {
 
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+// import jwt from 'jsonwebtoken';
+// const secret = 'ghvkhgvkhgckhg';
 
-// const firebaseConfig1 = {
-//   apiKey: apiKey,
-//   authDomain: authDomain,
-//   databaseURL: databaseURL,
-//   projectId: projectId,
-//   storageBucket: storageBucket,
-//   messagingSenderId: messagingSenderId,
-//   appId: appId,
-//   measurementId: measurementId,
-// };
 const firebaseConfig1 = {
   apiKey: 'AIzaSyDckWQWECL9IMvRADUlAGifTcrRXWFzCyI',
   authDomain: 'psychologists-22f26.firebaseapp.com',
@@ -93,7 +85,7 @@ export const getPsychologistSort = createAsyncThunk(
     }
   }
 );
-
+///////////////////////////////////////////////////////////////////
 const firebaseConfig2 = {
   apiKey: 'AIzaSyBBRSIDcuZEamZAUDHOkk8C-KBAYh4CgUM',
   authDomain: 'psychologist-7ca39.firebaseapp.com',
@@ -133,6 +125,14 @@ export const createUser = createAsyncThunk(
       const user = userCredential.user;
       const { accessToken, stsTokenManager } = user;
       const userId = user.uid;
+
+      // const token = jwt.sign(userId, secret);
+      // console.log(token);
+      // const decode = jwt.decode(token);
+      // console.log(decode);
+      // const verify = jwt.verify(token, secret);
+      // console.log(verify);
+
       const userData = {
         name: name,
         email: user.email,

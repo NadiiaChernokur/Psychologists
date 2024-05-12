@@ -47,7 +47,7 @@ const Card = ({ array }) => {
 
   useEffect(() => {
     const getToken = JSON.parse(localStorage.getItem('tokenPsych'));
-    console.log(getToken);
+
     if (getToken === null || getToken.length === 0) {
       return;
       // const value = await dispatch(getUserToToken(getToken));
@@ -67,7 +67,7 @@ const Card = ({ array }) => {
   };
   const addToFavorite = async name => {
     const getToken = JSON.parse(localStorage.getItem('tokenPsych'));
-    console.log(getToken);
+
     if (getToken && getToken.length !== 0) {
       const value = await dispatch(getUserToToken(getToken));
       console.log(value.payload);

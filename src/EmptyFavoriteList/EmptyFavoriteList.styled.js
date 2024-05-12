@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 export const EmptyContainer = styled.div`
   background-color: #2753d6;
   margin: auto;
@@ -11,4 +11,7 @@ export const EmptyContainer = styled.div`
   font-size: 50px;
   width: 100vw;
   height: 115vh;
+  @media screen and (max-width: 480px) {
+    min-width: 662px;
+  }
 `;

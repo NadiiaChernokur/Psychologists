@@ -13,7 +13,7 @@ export const List = styled.li`
     max-width: 580px;
     min-height: 656px;
   }
-  @media screen and (max-width: 580px) {
+  @media screen and (max-width: 480px) {
     max-width: 414px;
     gap: 14px;
   }
@@ -30,7 +30,7 @@ export const CardImg = styled.img`
   height: 120px;
   padding: 12px;
   box-sizing: border-box;
-  @media screen and (max-width: 580px) {
+  @media screen and (max-width: 480px) {
     width: 180px;
     height: 180px;
   }
@@ -43,6 +43,9 @@ export const Rating = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 8px;
+  /* @media screen and (max-width: 480px) {
+    width: 202px;
+  } */
 `;
 export const RatingDiv = styled.div`
   display: flex;
@@ -54,19 +57,20 @@ export const RatingDiv = styled.div`
   @media screen and (max-width: 768px) {
     font-size: 20px;
   }
-  @media screen and (max-width: 580) {
+  @media screen and (max-width: 480px) {
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
     position: relative;
   }
 `;
+
 export const RatingP = styled.p`
   border-right: 2px solid rgba(84, 190, 150, 0.2);
   padding-right: 16px;
   margin-right: 16px;
   margin-left: 8px;
-  @media screen and (max-width: 580px) {
+  @media screen and (max-width: 480px) {
     margin-left: 0px;
   }
 `;
@@ -102,7 +106,7 @@ export const Name = styled.p`
     top: 24px;
     position: relative;
   }
-  @media screen and (max-width: 580px) {
+  @media screen and (max-width: 480px) {
     left: 0px;
     top: 8px;
     width: 122px;
@@ -118,7 +122,7 @@ export const ExperienceDiv = styled.div`
     position: relative;
     left: -143px;
   }
-  @media screen and (max-width: 580px) {
+  @media screen and (max-width: 480px) {
     left: -196px;
   }
 `;
@@ -128,7 +132,7 @@ export const ExperienceContainer = styled.div`
   @media screen and (max-width: 768px) {
     min-width: 546px;
   }
-  @media screen and (max-width: 580px) {
+  @media screen and (max-width: 480px) {
     flex-direction: column;
     min-width: 368px;
   }
@@ -159,7 +163,7 @@ export const About = styled.p`
     font-size: 22px;
     min-width: 528px;
   }
-  @media screen and (max-width: 580px) {
+  @media screen and (max-width: 480px) {
     left: -194px;
     min-width: 368px;
   }
@@ -183,7 +187,7 @@ export const ReadMe = styled.button`
     max-width: 640px;
     margin-bottom: 72px;
   }
-  @media screen and (max-width: 580px) {
+  @media screen and (max-width: 480px) {
     left: -196px;
   }
 `;
@@ -201,7 +205,7 @@ export const FavButton = styled.button`
   &:hover {
     background: none;
   }
-  @media screen and (max-width: 580px) {
+  @media screen and (max-width: 480px) {
     position: absolute;
     right: 28px;
   }

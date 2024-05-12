@@ -118,7 +118,7 @@ export const LogoutButton = styled.button`
   @media screen and (max-width: 768px) {
     background: #54be96;
   }
-  @media screen and (max-width: 580px) {
+  @media screen and (max-width: 480px) {
     font-size: 34px;
   }
 `;
@@ -176,7 +176,7 @@ export const OpenModalSvg = styled.svg`
   @media screen and (max-width: 768px) {
     display: block;
   }
-  @media screen and (max-width: 580px) {
+  @media screen and (max-width: 480px) {
     width: 50px;
     height: 50px;
   }

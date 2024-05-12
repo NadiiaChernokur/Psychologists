@@ -45,6 +45,7 @@ const Header = () => {
     // setIsLogout(true);
     localStorage.setItem('tokenPsych', JSON.stringify([]));
     // dispatch(removeUser());
+    setIsModalOpen(false);
     navigate('/');
   };
   const openModal = () => {

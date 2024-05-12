@@ -45,7 +45,7 @@ const HeaderMenu = ({ close, isLogin, toLogOut }) => {
           </NavLink>
           {login && (
             <NavLink to="/favorite">
-              <PagesParagraf> Favorites</PagesParagraf>
+              <PagesParagraf onClick={close}> Favorites</PagesParagraf>
             </NavLink>
           )}
         </MenuNav>
