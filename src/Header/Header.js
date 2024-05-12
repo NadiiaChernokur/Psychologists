@@ -20,7 +20,7 @@ import {
   PeopleMenu,
 } from './Header.styled';
 import sprite from '../sprite.svg';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import HeaderMenu from '../HeaderMenu/HeaderMenu';
 
