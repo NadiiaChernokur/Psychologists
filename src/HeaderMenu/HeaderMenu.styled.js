@@ -27,6 +27,10 @@ export const HeaderMenuContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  @media screen and (max-width: 360px) {
+    width: 344px;
+    height: 482px;
+  }
 `;
 export const MenuPages = styled.div`
   width: 50px;
@@ -41,7 +45,6 @@ export const MenuButtons = styled.div`
   font-size: 16px;
   line-height: 125%;
   letter-spacing: -0.01em;
-  /* color: #191a15; */
   gap: 8px;
 `;
 export const MenuNav = styled.div`
@@ -54,17 +57,22 @@ export const MenuNav = styled.div`
 `;
 export const MenuP = styled.p`
   color: #d9fcf3;
+  @media screen and (max-width: 360px) {
+    font-size: 34px;
+  }
 `;
 export const MenuPeg = styled.p`
   border: 1px solid #d9fcf3;
   border-radius: 30px;
   padding: 14px 39px;
-  /* background: #54be96; */
   color: #d9fcf3;
   font-weight: 500;
   font-size: 16px;
   line-height: 125%;
   letter-spacing: -0.01em;
+  @media screen and (max-width: 360px) {
+    font-size: 34px;
+  }
 `;
 export const MenuOut = styled.button`
   position: absolute;

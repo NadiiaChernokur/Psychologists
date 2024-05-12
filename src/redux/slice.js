@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 import {
   addFavorite,
   createUser,
@@ -7,20 +7,20 @@ import {
   getUserToToken,
   login,
   removeFavoriteItem,
+  removeUser,
   updateArray,
-} from "./operetion";
+} from './operetion';
 
 const initialState = {
   psychologists: [],
   user: {},
   psychologistsSort: [],
   favoriteArray: [],
-
   isLoading: false,
   error: null,
 };
 
-const handlePending = (state) => {
+const handlePending = state => {
   state.isLoading = true;
 };
 
@@ -58,14 +58,12 @@ const addFavoriteArrayFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
   state.favoriteArray.push(action.payload);
-
-  // state.favoriteArray = [];
 };
 const removeFavoriteArrayFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
   state.favoriteArray = state.favoriteArray.filter(
-    (el) => el.name !== action.payload
+    el => el.name !== action.payload
   );
 };
 const toGetUser = (state, action) => {
@@ -73,10 +71,15 @@ const toGetUser = (state, action) => {
   state.error = null;
   state.user = action.payload;
 };
+const toEmptyUser = (state, action) => {
+  state.isLoading = false;
+  state.error = null;
+  state.user = action.payload;
+};
 const autoSlice = createSlice({
-  name: "psychologists",
+  name: 'psychologists',
   initialState: initialState,
-  extraReducers: (builder) =>
+  extraReducers: builder =>
     builder
       .addCase(getPsychologist.pending, handlePending)
       .addCase(getPsychologist.fulfilled, handleGetPsychologist)
@@ -97,7 +100,8 @@ const autoSlice = createSlice({
       .addCase(addFavorite.pending, handlePending)
       .addCase(addFavorite.fulfilled, addFavoriteArrayFulfilled)
       .addCase(addFavorite.rejected, handleRejected)
-      .addCase(removeFavoriteItem().type, removeFavoriteArrayFulfilled),
+      .addCase(removeFavoriteItem().type, removeFavoriteArrayFulfilled)
+      .addCase(removeUser().type, toEmptyUser),
 });
 
 export const autoReducer = autoSlice.reducer;

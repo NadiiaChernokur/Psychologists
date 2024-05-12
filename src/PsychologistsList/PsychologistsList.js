@@ -1,17 +1,17 @@
-import { useEffect, useState } from "react";
-import Card from "../Card/Card";
+import { useEffect, useState } from 'react';
+import Card from '../Card/Card';
 import {
   Container,
   Filter,
   PsychologistsListButton,
   PsychologistsListSelect,
-} from "./PsychologistsList.styled";
-import { useDispatch, useSelector } from "react-redux";
+} from './PsychologistsList.styled';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   getPsychologist,
   getPsychologistSort,
   updateArray,
-} from "../redux/operetion";
+} from '../redux/operetion';
 // import { Loader } from "../Loader";
 
 const PsychologistsList = () => {
@@ -20,8 +20,8 @@ const PsychologistsList = () => {
   // const [pageSort, setPageSort] = useState(3);
   const [sortPsych, setSortPsych] = useState(false);
   const [sortArrayPsych, setSortArrayPsych] = useState([]);
-  const psychArray = useSelector((state) => state.psychologists);
-  const psychSortArray = useSelector((state) => state.psychologistsSort);
+  const psychArray = useSelector(state => state.psychologists);
+  const psychSortArray = useSelector(state => state.psychologistsSort);
   // const favor = useSelector((state) => state.favoriteArray);
 
   useEffect(() => {
@@ -45,9 +45,9 @@ const PsychologistsList = () => {
   }, [dispatch, page, sortPsych]);
 
   const addPage = () => {
-    setPage((prev) => prev + 3);
+    setPage(prev => prev + 3);
   };
-  const handleOptionChange = (event) => {
+  const handleOptionChange = event => {
     const selectedValue = event.target.value;
     setPage(3);
     setSortPsych(true);

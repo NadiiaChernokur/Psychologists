@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 export const Container = styled.div`
   margin: auto;
   max-width: 1204px;
@@ -22,12 +22,19 @@ export const PsychologistsListSelect = styled.select`
   line-height: 125%;
   color: #fbfbfb;
   margin-bottom: 32px;
+  @media screen and (max-width: 360px) {
+    width: 310px;
+    font-size: 30px;
+  }
 `;
 export const PsychologistsListButton = styled.button`
   border-radius: 30px;
   padding: 14px 48px;
-  width: 176px;
+  /* width: 176px; */
   margin: 64px auto;
+  @media screen and (max-width: 768px) {
+    font-size: 28px;
+  }
 `;
 export const Filter = styled.p`
   font-weight: 500;
@@ -35,4 +42,7 @@ export const Filter = styled.p`
   line-height: 129%;
   color: #8a8a89;
   margin-bottom: 8px;
+  @media screen and (max-width: 360px) {
+    font-size: 30px;
+  }
 `;

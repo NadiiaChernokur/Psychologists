@@ -15,6 +15,9 @@ export const MainPageContainer = styled.main`
     height: 100%;
     gap: 82px;
   }
+  @media screen and (max-width: 360px) {
+    max-width: 360px;
+  }
 `;
 export const LeftContainer = styled.div`
   width: 50%;
@@ -38,6 +41,10 @@ export const RigchtContainer = styled.div`
     width: 324px;
     height: 369px;
   }
+  @media screen and (max-width: 360px) {
+    width: 384px;
+    height: 460px;
+  }
 `;
 export const Text = styled.h2`
   font-size: clamp(30px, 5vw, 80px);
@@ -58,10 +65,13 @@ export const Text2 = styled.p`
   @media screen and (max-width: 768px) {
     font-size: 22px;
   }
+  @media screen and (max-width: 768px) {
+    font-size: 30px;
+  }
 `;
 export const MainButton = styled.button`
   border-radius: 30px;
-  width: 235px;
+  /* width: 235px; */
   padding: 18px 50px;
   display: flex;
   gap: 18px;
@@ -71,6 +81,11 @@ export const MainButton = styled.button`
   @media screen and (max-width: 768px) {
     justify-content: space-between;
   }
+  @media screen and (max-width: 360px) {
+    white-space: nowrap;
+
+    font-size: 30px;
+  }
 `;
 export const Img = styled.div`
   background-image: url(${foto});
@@ -79,6 +94,10 @@ export const Img = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 10px;
+  @media screen and (max-width: 360px) {
+    width: 382px;
+    height: 428px;
+  }
 `;
 
 export const Blue = styled.div`
@@ -96,6 +115,10 @@ export const Blue = styled.div`
   @media screen and (max-width: 768px) {
     width: 8.5vw;
     height: 8.5vw;
+  }
+  @media screen and (max-width: 360px) {
+    width: 10vw;
+    height: 10vw;
   }
 `;
 
@@ -120,6 +143,10 @@ export const Orange = styled.div`
   @media screen and (max-width: 768px) {
     width: 8.5vw;
     height: 8.5vw;
+  }
+  @media screen and (max-width: 360px) {
+    width: 10vw;
+    height: 10vw;
   }
 `;
 

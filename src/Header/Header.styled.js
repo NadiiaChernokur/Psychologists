@@ -28,6 +28,9 @@ export const LogoDiv = styled.div`
 `;
 export const Logo = styled.h1`
   color: #191a15;
+  @media screen and (max-width: 360px) {
+    font-size: 28px;
+  }
 `;
 export const LogoSpan = styled.span`
   color: #54be96;
@@ -88,6 +91,9 @@ export const ButtonsParagrafReg = styled.p`
   font-size: 16px;
   line-height: 125%;
   letter-spacing: -0.01em;
+  @media screen and (max-width: 360px) {
+    font-size: 34px;
+  }
 `;
 export const Button = styled.button`
   border-radius: 30px;
@@ -111,7 +117,6 @@ export const LogoutButton = styled.button`
   color: #191a15;
   white-space: nowrap;
   @media screen and (max-width: 768px) {
-    /* color: #d9fcf3; */
     background: #54be96;
   }
 `;
@@ -168,5 +173,9 @@ export const OpenModalSvg = styled.svg`
   display: none;
   @media screen and (max-width: 768px) {
     display: block;
+  }
+  @media screen and (max-width: 360px) {
+    width: 50px;
+    height: 50px;
   }
 `;
