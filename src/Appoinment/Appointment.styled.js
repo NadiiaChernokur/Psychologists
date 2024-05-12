@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const AppointmentModalBackground = styled.div`
   position: fixed;
@@ -88,9 +88,9 @@ export const Send = styled.button`
   border-radius: 30px;
   padding: 16px 217px;
   margin-top: 24px;
-  &:hover {
+  /* &:hover {
     background: none;
-  }
+  } */
 `;
 export const TextArea = styled.textarea`
   border: 1px solid rgba(25, 26, 21, 0.1);

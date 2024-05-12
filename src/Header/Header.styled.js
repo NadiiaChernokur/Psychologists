@@ -28,7 +28,7 @@ export const LogoDiv = styled.div`
 `;
 export const Logo = styled.h1`
   color: #191a15;
-  @media screen and (max-width: 360px) {
+  @media screen and (max-width: 320px) {
     font-size: 28px;
   }
 `;
@@ -91,7 +91,7 @@ export const ButtonsParagrafReg = styled.p`
   font-size: 16px;
   line-height: 125%;
   letter-spacing: -0.01em;
-  @media screen and (max-width: 360px) {
+  @media screen and (max-width: 320px) {
     font-size: 34px;
   }
 `;
@@ -170,7 +170,7 @@ export const OpenModalSvg = styled.svg`
   @media screen and (max-width: 768px) {
     display: block;
   }
-  @media screen and (max-width: 360px) {
+  @media screen and (max-width: 320px) {
     width: 50px;
     height: 50px;
   }

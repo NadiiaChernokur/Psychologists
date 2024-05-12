@@ -22,7 +22,7 @@ export const PsychologistsListSelect = styled.select`
   line-height: 125%;
   color: #fbfbfb;
   margin-bottom: 32px;
-  @media screen and (max-width: 360px) {
+  @media screen and (max-width: 320px) {
     width: 310px;
     font-size: 30px;
   }
@@ -42,7 +42,7 @@ export const Filter = styled.p`
   line-height: 129%;
   color: #8a8a89;
   margin-bottom: 8px;
-  @media screen and (max-width: 360px) {
+  @media screen and (max-width: 320px) {
     font-size: 30px;
   }
 `;
