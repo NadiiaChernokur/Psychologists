@@ -4,4 +4,7 @@ export const FavContainer = styled.div`
   height: 115%;
   padding-top: 64px;
   padding-bottom: 64px;
+  @media screen and (max-width: 580px) {
+    min-width: 580px;
+  }
 `;

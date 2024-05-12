@@ -42,7 +42,7 @@ export const Filter = styled.p`
   line-height: 129%;
   color: #8a8a89;
   margin-bottom: 8px;
-  @media screen and (max-width: 320px) {
+  @media screen and (max-width: 580px) {
     font-size: 30px;
   }
 `;

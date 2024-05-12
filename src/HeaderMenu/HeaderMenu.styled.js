@@ -27,7 +27,7 @@ export const HeaderMenuContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  @media screen and (max-width: 320px) {
+  @media screen and (max-width: 580px) {
     width: 344px;
     height: 482px;
   }
@@ -56,7 +56,7 @@ export const MenuNav = styled.div`
 `;
 export const MenuP = styled.p`
   color: #d9fcf3;
-  @media screen and (max-width: 320px) {
+  @media screen and (max-width: 580px) {
     font-size: 34px;
   }
 `;
@@ -69,7 +69,7 @@ export const MenuPeg = styled.p`
   font-size: 16px;
   line-height: 125%;
   letter-spacing: -0.01em;
-  @media screen and (max-width: 320px) {
+  @media screen and (max-width: 580px) {
     font-size: 34px;
   }
 `;
