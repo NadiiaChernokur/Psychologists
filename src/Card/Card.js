@@ -70,7 +70,7 @@ const Card = ({ array }) => {
 
     if (getToken && getToken.length !== 0) {
       const value = await dispatch(getUserToToken(getToken));
-      console.log(value.payload);
+
       if (
         value.payload === 'This service is available only to registered users'
       ) {

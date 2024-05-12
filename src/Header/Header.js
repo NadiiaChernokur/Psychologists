@@ -1,9 +1,11 @@
-import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import {
   Buttons,
   ButtonsParagraf,
   ButtonsParagrafReg,
   HeaderContainer,
+  Indicator,
+  IndicatorPsych,
   Logo,
   LogoDiv,
   LogoSpan,
@@ -20,16 +22,19 @@ import {
   PeopleMenu,
 } from './Header.styled';
 import sprite from '../sprite.svg';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import HeaderMenu from '../HeaderMenu/HeaderMenu';
+import { removeUser } from '../redux/operetion';
 
 const Header = () => {
   const user = useSelector(state => state.user);
   const [isToken, setIsToken] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const location = useLocation();
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (user) {
@@ -42,9 +47,9 @@ const Header = () => {
   }, [user]);
   const toLogOut = () => {
     setIsToken(false);
-    // setIsLogout(true);
+
     localStorage.setItem('tokenPsych', JSON.stringify([]));
-    // dispatch(removeUser());
+    dispatch(removeUser());
     setIsModalOpen(false);
     navigate('/');
   };
@@ -85,14 +90,43 @@ const Header = () => {
             />
           )}
           <Pages>
-            <NavLink to="/">
+            <NavLink
+              to="/"
+              style={{
+                position: 'relative',
+                display: 'flex',
+                alignItems: 'center',
+                flexDirection: 'column',
+              }}
+            >
+              {location.pathname === '/' && <Indicator />}
               <PagesParagraf>Home</PagesParagraf>
             </NavLink>
-            <NavLink to="/psychologists">
+
+            <NavLink
+              to="/psychologists"
+              style={{
+                position: 'relative',
+                display: 'flex',
+                alignItems: 'center',
+                flexDirection: 'column',
+              }}
+            >
+              {location.pathname === '/psychologists' && <Indicator />}
               <PagesParagraf> Psychologists</PagesParagraf>
             </NavLink>
+
             {isToken && (
-              <NavLink to="/favorite">
+              <NavLink
+                to="/favorite"
+                style={{
+                  position: 'relative',
+                  display: 'flex',
+                  alignItems: 'center',
+                  flexDirection: 'column',
+                }}
+              >
+                {location.pathname === '/favorite' && <Indicator />}
                 <PagesParagraf> Favorites</PagesParagraf>
               </NavLink>
             )}

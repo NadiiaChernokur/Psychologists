@@ -44,6 +44,7 @@ export const HeaderParagraf = styled.p`
 export const Pages = styled.div`
   display: flex;
   gap: 4vw;
+  position: relative;
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -54,6 +55,7 @@ export const PagesParagraf = styled.p`
   line-height: 125%;
   letter-spacing: -0.01em;
   color: #191a15;
+  position: relative;
   @media screen and (max-width: 768px) {
     color: #d9fcf3;
   }
@@ -179,5 +181,29 @@ export const OpenModalSvg = styled.svg`
   @media screen and (max-width: 480px) {
     width: 50px;
     height: 50px;
+  }
+`;
+export const Indicator = styled.div`
+  width: 10px;
+  height: 10px;
+  background-color: green;
+  border-radius: 50%;
+  /* position: absolute; */
+  top: 20px;
+  left: 20px;
+  @media screen and (max-width: 768px) {
+    /* display: block; */
+  }
+`;
+export const IndicatorPsych = styled.div`
+  width: 10px;
+  height: 10px;
+  background-color: green;
+  border-radius: 50%;
+  position: absolute;
+  top: 20px;
+  left: 50px;
+  @media screen and (max-width: 768px) {
+    /* display: block; */
   }
 `;

@@ -236,9 +236,9 @@ export const getUserToToken = createAsyncThunk(
   }
 );
 
-// export const removeUser = () => {
-//   return {
-//     type: 'removeUser',
-//     payload: {},
-//   };
-// };
+export const removeUser = () => {
+  return {
+    type: 'removeUser',
+    payload: {},
+  };
+};
