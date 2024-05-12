@@ -29,18 +29,10 @@ const schema = yup.object().shape({
 });
 
 const Registration = () => {
-  // const stateError = useSelector((state) => state.error);
-  // const [error, setError] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   if (stateError !== null) {
-  //     setError(stateError);
-  //   }
-  // }, [stateError]);
 
   useEffect(() => {
     const handleEscapeKey = e => {

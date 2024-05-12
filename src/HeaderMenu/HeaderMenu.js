@@ -17,7 +17,6 @@ import sprite from '../sprite.svg';
 import { useEffect, useState } from 'react';
 
 const HeaderMenu = ({ close, isLogin, toLogOut }) => {
-  console.log(isLogin);
   const [login, setLogin] = useState(false);
   useEffect(() => {
     if (isLogin) {

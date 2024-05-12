@@ -12,21 +12,17 @@ import {
   getPsychologistSort,
   updateArray,
 } from '../redux/operetion';
-// import { Loader } from "../Loader";
 
 const PsychologistsList = () => {
   const dispatch = useDispatch();
   const [page, setPage] = useState(3);
-  // const [pageSort, setPageSort] = useState(3);
   const [sortPsych, setSortPsych] = useState(false);
   const [sortArrayPsych, setSortArrayPsych] = useState([]);
   const psychArray = useSelector(state => state.psychologists);
   const psychSortArray = useSelector(state => state.psychologistsSort);
-  // const favor = useSelector((state) => state.favoriteArray);
 
   useEffect(() => {
     if (psychSortArray.length > 0) {
-      // const firstThreeElements = psychSortArray.slice(0, pageSort);
       const firstThreeElements = psychSortArray.slice(0, page);
       console.log(firstThreeElements);
       setSortArrayPsych(firstThreeElements);
@@ -53,9 +49,7 @@ const PsychologistsList = () => {
     setSortPsych(true);
     dispatch(getPsychologistSort(selectedValue));
   };
-  // const sortLoadMore = () => {
-  //   setPage((prev) => prev + 3);
-  // };
+
   return (
     <Container>
       <Filter>Filters</Filter>

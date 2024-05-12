@@ -1,17 +1,15 @@
-import Header from "./Header/Header";
+import Header from './Header/Header';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { Suspense, lazy } from 'react';
+import { Loader } from './Loader.js';
 
-import { Navigate, Route, Routes } from "react-router-dom";
-
-import { Suspense, lazy } from "react";
-import { Loader } from "./Loader.js";
-
-const MainPage = lazy(() => import("./MainPage/MainPage"));
+const MainPage = lazy(() => import('./MainPage/MainPage'));
 const PsychologistPage = lazy(() =>
-  import("./PsychologistsList/PsychologistsList")
+  import('./PsychologistsList/PsychologistsList')
 );
-const Favorits = lazy(() => import("./FavoriteList/FavoriteList.js"));
-const LogIn = lazy(() => import("./LogIn/LogIn.js"));
-const Registration = lazy(() => import("./Registration/Registration.js"));
+const Favorits = lazy(() => import('./FavoriteList/FavoriteList.js'));
+const LogIn = lazy(() => import('./LogIn/LogIn.js'));
+const Registration = lazy(() => import('./Registration/Registration.js'));
 
 const App = () => {
   return (

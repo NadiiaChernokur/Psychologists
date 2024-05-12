@@ -99,11 +99,7 @@ export const Button = styled.button`
   border-radius: 30px;
   padding: 1.3vh 2vw;
 `;
-export const OutletDiv = styled.div`
-  /* border-top: 1px solid rgba(25, 26, 21, 0.1); */
-  /* display: flex;
-  flex-direction: column; */
-`;
+export const OutletDiv = styled.div``;
 
 export const LogoutButton = styled.button`
   border: 1px solid rgba(25, 26, 21, 0.2);

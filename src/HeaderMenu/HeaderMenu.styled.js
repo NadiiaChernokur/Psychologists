@@ -52,7 +52,6 @@ export const MenuNav = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  /* height: 64px; */
   gap: 20px;
 `;
 export const MenuP = styled.p`

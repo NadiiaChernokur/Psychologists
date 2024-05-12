@@ -11,18 +11,6 @@ import {
 
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-// import database from "../firebaseConfig";
-// import dotenv from 'dotenv';
-// dotenv.config();
-
-// const apiKey = process.env.apiKey;
-// const authDomain = process.env.authDomain;
-// const databaseURL = process.env.databaseURL;
-// const projectId = process.env.projectId;
-// const storageBucket = process.env.storageBucket;
-// const messagingSenderId = process.env.messagingSenderId;
-// const appId = process.env.appId;
-// const measurementId = process.env.measurementId;
 
 // const firebaseConfig1 = {
 //   apiKey: apiKey,
@@ -55,10 +43,7 @@ export const getPsychologist = createAsyncThunk(
     try {
       const psychRef = ref(database, '/');
       const psycRef = query(psychRef, orderByKey(), limitToFirst(page));
-
-      console.log(psycRef);
       const snapshot = await get(psycRef);
-      console.log(snapshot.val());
       return snapshot.val();
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -72,9 +57,7 @@ export const getPsychologistSort = createAsyncThunk(
     try {
       const psychRef = await get(ref(database));
       const res = psychRef.val();
-
       const resCopy = Array.from(res);
-
       switch (data) {
         case 'A to Z':
           const alphabet = resCopy.sort((a, b) => {
@@ -211,11 +194,8 @@ export const addFavorite = createAsyncThunk(
   async (name, thunkAPI) => {
     try {
       const psychRef = ref(database, '/');
-
       const snapshot = await get(psychRef);
-
       const selected = snapshot.val().find(el => el.name === name);
-
       return selected;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -244,7 +224,6 @@ export const getUserToToken = createAsyncThunk(
 
       const foundUser = Object.values(result).find(
         user => user.accessToken === accessToken
-        // (user) => user.name === accessToken
       );
 
       if (!foundUser) {
@@ -257,9 +236,9 @@ export const getUserToToken = createAsyncThunk(
   }
 );
 
-export const removeUser = () => {
-  return {
-    type: 'removeUser',
-    payload: {},
-  };
-};
+// export const removeUser = () => {
+//   return {
+//     type: 'removeUser',
+//     payload: {},
+//   };
+// };

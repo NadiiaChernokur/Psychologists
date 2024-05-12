@@ -7,7 +7,6 @@ import {
   getUserToToken,
   login,
   removeFavoriteItem,
-  removeUser,
   updateArray,
 } from './operetion';
 
@@ -71,11 +70,11 @@ const toGetUser = (state, action) => {
   state.error = null;
   state.user = action.payload;
 };
-const toEmptyUser = (state, action) => {
-  state.isLoading = false;
-  state.error = null;
-  state.user = action.payload;
-};
+// const toEmptyUser = (state, action) => {
+//   state.isLoading = false;
+//   state.error = null;
+//   state.user = action.payload;
+// };
 const autoSlice = createSlice({
   name: 'psychologists',
   initialState: initialState,
@@ -100,8 +99,8 @@ const autoSlice = createSlice({
       .addCase(addFavorite.pending, handlePending)
       .addCase(addFavorite.fulfilled, addFavoriteArrayFulfilled)
       .addCase(addFavorite.rejected, handleRejected)
-      .addCase(removeFavoriteItem().type, removeFavoriteArrayFulfilled)
-      .addCase(removeUser().type, toEmptyUser),
+      .addCase(removeFavoriteItem().type, removeFavoriteArrayFulfilled),
+  // .addCase(removeUser().type, toEmptyUser),
 });
 
 export const autoReducer = autoSlice.reducer;

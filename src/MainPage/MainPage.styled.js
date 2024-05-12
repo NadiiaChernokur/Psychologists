@@ -71,7 +71,6 @@ export const Text2 = styled.p`
 `;
 export const MainButton = styled.button`
   border-radius: 30px;
-  /* width: 235px; */
   padding: 18px 50px;
   display: flex;
   gap: 18px;
