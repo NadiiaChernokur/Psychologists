@@ -27,27 +27,18 @@ import HeaderMenu from '../HeaderMenu/HeaderMenu';
 const Header = () => {
   const user = useSelector(state => state.user);
   const [isToken, setIsToken] = useState(false);
-  // const [isLogout, setIsLogout] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
   // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   if (isLogout) {
-  //     setIsToken(false);
-  //   }
-  // }, [isLogout]);
 
   useEffect(() => {
     if (user) {
       setIsToken(true);
     }
     const getToken = JSON.parse(localStorage.getItem('tokenPsych'));
-
     if (getToken && getToken.length !== 0) {
-      console.log('9999999999');
       setIsToken(true);
     }
-    // console.log(getToken);
   }, [user]);
   const toLogOut = () => {
     setIsToken(false);
