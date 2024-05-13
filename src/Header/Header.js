@@ -36,7 +36,7 @@ const Header = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (user) {
+    if (user.length > 0) {
       setIsToken(true);
     }
     const getToken = JSON.parse(localStorage.getItem('tokenPsych'));
