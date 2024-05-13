@@ -11,8 +11,6 @@ import {
 
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-// import jwt from 'jsonwebtoken';
-// const secret = 'ghvkhgvkhgckhg';
 
 const firebaseConfig1 = {
   apiKey: 'AIzaSyDckWQWECL9IMvRADUlAGifTcrRXWFzCyI',

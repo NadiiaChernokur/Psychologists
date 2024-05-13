@@ -76,13 +76,12 @@ export const MainButton = styled.button`
   gap: 18px;
   align-items: center;
   font-size: 20px;
-
+  width: 235px;
   @media screen and (max-width: 768px) {
     justify-content: space-between;
   }
   @media screen and (max-width: 480px) {
     white-space: nowrap;
-
     font-size: 30px;
   }
 `;

@@ -48,6 +48,7 @@ const userLogin = (state, action) => {
 const psychChoice = (state, action) => {
   state.isLoading = false;
   state.error = null;
+  state.psychologists = [];
   state.psychologistsSort = action.payload;
 };
 const update = (state, action) => {

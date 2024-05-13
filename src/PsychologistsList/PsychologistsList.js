@@ -16,6 +16,7 @@ import {
 const PsychologistsList = () => {
   const dispatch = useDispatch();
   const [page, setPage] = useState(3);
+  const [lastPage, setLastPage] = useState(false);
   const [sortPsych, setSortPsych] = useState(false);
   const [sortArrayPsych, setSortArrayPsych] = useState([]);
   const psychArray = useSelector(state => state.psychologists);
@@ -24,7 +25,7 @@ const PsychologistsList = () => {
   useEffect(() => {
     if (psychSortArray.length > 0) {
       const firstThreeElements = psychSortArray.slice(0, page);
-      console.log(firstThreeElements);
+
       setSortArrayPsych(firstThreeElements);
     }
   }, [page, psychSortArray]);
@@ -41,10 +42,16 @@ const PsychologistsList = () => {
   }, [dispatch, page, sortPsych]);
 
   const addPage = () => {
+    if (psychArray.length === 32 || sortArrayPsych.length === 32) {
+      setLastPage(true);
+      return;
+    }
+
     setPage(prev => prev + 3);
   };
   const handleOptionChange = event => {
     const selectedValue = event.target.value;
+    setLastPage(false);
     setPage(3);
     setSortPsych(true);
     dispatch(getPsychologistSort(selectedValue));
@@ -63,15 +70,11 @@ const PsychologistsList = () => {
         <option>Not popular</option>
       </PsychologistsListSelect>
       {<Card array={sortPsych ? sortArrayPsych : psychArray} />}
-      {/* {sortArrayPsych.length > 0 ? (
-        <PsychologistsListButton onClick={sortLoadMore}>
+      {!lastPage && (
+        <PsychologistsListButton onClick={addPage}>
           Load more
         </PsychologistsListButton>
-      ) : ( */}
-      <PsychologistsListButton onClick={addPage}>
-        Load more
-      </PsychologistsListButton>
-      {/* )} */}
+      )}
     </Container>
   );
 };
