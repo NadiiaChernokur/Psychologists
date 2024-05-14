@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import foto from '../../src/imagemain.jpg';
+import retina from '../../src/image@2x.jpg';
 export const MainPageContainer = styled.main`
   background: linear-gradient(to right, #ebfcf8, rgba(84, 190, 150, 0.2));
   width: 100vw;
@@ -77,6 +78,9 @@ export const MainButton = styled.button`
   align-items: center;
   font-size: 20px;
   width: 235px;
+  &:hover {
+    background: #36a379;
+  }
   @media screen and (max-width: 768px) {
     justify-content: space-between;
   }
@@ -92,6 +96,9 @@ export const Img = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 10px;
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    background-image: url(${retina});
+  }
   @media screen and (max-width: 480px) {
     width: 382px;
     height: 428px;

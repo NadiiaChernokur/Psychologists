@@ -85,6 +85,9 @@ export const ButtonsParagraf = styled.p`
   line-height: 125%;
   letter-spacing: -0.01em;
   color: #191a15;
+  &:hover {
+    background-color: #36a379;
+  }
 `;
 export const ButtonsParagrafReg = styled.p`
   border: 1px solid rgba(25, 26, 21, 0.2);
@@ -96,6 +99,9 @@ export const ButtonsParagrafReg = styled.p`
   font-size: 16px;
   line-height: 125%;
   letter-spacing: -0.01em;
+  &:hover {
+    background-color: #36a379;
+  }
   @media screen and (max-width: 580px) {
     font-size: 34px;
   }
@@ -117,6 +123,9 @@ export const LogoutButton = styled.button`
   letter-spacing: -0.01em;
   color: #191a15;
   white-space: nowrap;
+  &:hover {
+    background-color: #36a379;
+  }
   @media screen and (max-width: 768px) {
     background: #54be96;
   }

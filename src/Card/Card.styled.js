@@ -210,3 +210,8 @@ export const FavButton = styled.button`
     right: 28px;
   }
 `;
+export const FavButtonHerz = styled.svg`
+  &:hover {
+    background: none;
+  }
+`;

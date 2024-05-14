@@ -22,6 +22,10 @@ export const PsychologistsListSelect = styled.select`
   line-height: 125%;
   color: #fbfbfb;
   margin-bottom: 32px;
+  &:hover {
+    background: #36a379;
+  }
+
   @media screen and (max-width: 480px) {
     width: 310px;
     font-size: 30px;
