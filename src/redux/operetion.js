@@ -1,4 +1,5 @@
 import { initializeApp } from 'firebase/app';
+
 import {
   getDatabase,
   ref,
@@ -84,6 +85,23 @@ export const getPsychologistSort = createAsyncThunk(
   }
 );
 ///////////////////////////////////////////////////////////////////
+// const apiKey = process.env.APIKEY;
+// const authDomain = process.env.AUTHDOMAIN;
+// const projectId = process.env.PROJECTID;
+// const storageBucket = process.env.STORAGEBUCKET;
+// const messagingSenderId = process.env.MESSAGINGSENDERID;
+// const appId = process.env.APPID;
+// const measurementId = process.env.MEASUREMENTID;
+
+// const firebaseConfig2 = {
+//   apiKey: apiKey,
+//   authDomain: authDomain,
+//   projectId: projectId,
+//   storageBucket: storageBucket,
+//   messagingSenderId: messagingSenderId,
+//   appId: appId,
+//   measurementId: measurementId,
+// };
 const firebaseConfig2 = {
   apiKey: 'AIzaSyBBRSIDcuZEamZAUDHOkk8C-KBAYh4CgUM',
   authDomain: 'psychologist-7ca39.firebaseapp.com',

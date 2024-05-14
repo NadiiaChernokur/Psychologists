@@ -25,6 +25,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import HeaderMenu from '../HeaderMenu/HeaderMenu';
 import { removeUser } from '../redux/operetion';
+// import dotenv from 'dotenv';
 
 const Header = () => {
   const user = useSelector(state => state.user);
@@ -36,6 +37,8 @@ const Header = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    const apiKey = process.env.APIKEY;
+    console.log(apiKey);
     if (user.length > 0) {
       setIsToken(true);
     }

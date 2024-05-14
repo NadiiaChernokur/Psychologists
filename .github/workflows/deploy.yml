@@ -3,6 +3,14 @@ name: Build and deploy to GitHub Pages
 on:
   push:
     branches: [main]
+env:
+  APIKEY: ${{secrets.APIKEY}}
+  AUTHDOMAIN: ${{secrets.AUTHDOMAIN}}
+  PROJECTID: ${{secrets.PROJECTID}}
+  STORAGEBUCKET: ${{secrets.STORAGEBUCKET}}
+  MESSAGINGSENDERID: ${{secrets.MESSAGINGSENDERID}}
+  APPID: ${{secrets.APPID}}
+  MEASUREMENTID: ${{secrets.MEASUREMENTID}}
 
 jobs:
   build-and-deploy:
